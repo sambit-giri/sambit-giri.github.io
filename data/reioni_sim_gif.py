@@ -39,7 +39,8 @@ class AnimatedGif:
  
     def add(self, image, label=''):
         plt_im = plt.imshow(image, cmap=self.cmap, animated=True)#, vmin=0, vmax=1)
-        plt_txt = plt.text(120, 25, label, color=self.text_color, fontsize=14)
+        props = dict(boxstyle='round', facecolor='wheat', alpha=0.95)
+        plt_txt = plt.text(120, 25, label, color=self.text_color, fontsize=14, bbox=props)
         plt.title(label)
         self.images.append([plt_im, plt_txt])
  
@@ -48,7 +49,7 @@ class AnimatedGif:
         animation.save(filename, writer='imagemagick', fps=self.fps)
 
 
-xf_dir = '/disk/dawn-1/garrelt/Reionization/C2Ray_WMAP7/500Mpc/500Mpc_f2_0_300/retrieved_from_khagolaz/results/'
+xf_dir = '/disk/dawn-1/garrelt/Reionization/C2Ray_WMAP7/500Mpc/500Mpc_z50_0_300/results/' #'/disk/dawn-1/garrelt/Reionization/C2Ray_WMAP7/500Mpc/500Mpc_f2_0_300/retrieved_from_khagolaz/results/'
 dn_dir = '/disk/dawn-1/garrelt/Reionization/C2Ray_WMAP7/500Mpc/coarser_densities/nc300/'
 xf_files = glob(xf_dir+'xfrac3d_*')
 dn_files = glob(dn_dir+'*n_all.dat')
@@ -56,7 +57,7 @@ xf_zs = np.array([ff.split('xfrac3d_')[-1].split('.bin')[0] for ff in xf_files])
 dn_zs = np.array([ff.split('/')[-1].split('n_all')[0] for ff in dn_files]).astype(float)
 zs = np.intersect1d(xf_zs,dn_zs)
 
-filename = './slices_dataset_500Mpc_f2_0_300.pkl'
+filename = './slices_dataset_500Mpc_z50_0_300.pkl' #'./slices_dataset_500Mpc_f2_0_300.pkl'
 dataset  = pickle.load(open(filename, 'rb')) if glob(filename) else {}
 if len(dataset.keys())==0:
 	for zz in tqdm(zs):
@@ -67,15 +68,17 @@ if len(dataset.keys())==0:
 pickle.dump(dataset,open(filename, 'wb'))
 
 dataset_zs = np.array([ii for ii in dataset.keys()]).astype(float)
-dataset_zs = dataset_zs[np.argsort(-dataset_zs)][15:]
+dataset_xs = np.array([dataset['{:.3f}'.format(zz)]['xf'].mean() for zz in dataset_zs])
+dataset_zs = dataset_zs[np.argsort(-dataset_zs)][12:-12]
 
-animated_gif = AnimatedGif(figsize=(5,5), fps=5, cmap='Greys', text_color='red')
-animated_gif.add(dataset['{:.3f}'.format(dataset_zs[0])]['xf'], label='z={:.2f}'.format(dataset_zs[0]))
+
+animated_gif = AnimatedGif(figsize=(5,5), fps=3, cmap='Greys', text_color='black')
+animated_gif.add(dataset['{:.3f}'.format(dataset_zs[0])]['xf'], label='$x_\mathrm{{HII}}={:.2f}$'.format(dataset['{:.3f}'.format(dataset_zs[0])]['xf'].mean()))
 for i,zz in enumerate(dataset_zs):
-	animated_gif.add(dataset['{:.3f}'.format(zz)]['xf'], label='z={:.2f}'.format(zz))
+	animated_gif.add(dataset['{:.3f}'.format(zz)]['xf'], label='$x_\mathrm{{HII}}={:.2f}$'.format(dataset['{:.3f}'.format(zz)]['xf'].mean()))#label='z={:.2f}'.format(zz))
 animated_gif.save('ReionSim_xf.gif')
 
-animated_gif = AnimatedGif(figsize=(5,5), fps=5, cmap=None, text_color='red')
+animated_gif = AnimatedGif(figsize=(5,5), fps=3, cmap=None, text_color='black')
 animated_gif.add(dataset['{:.3f}'.format(dataset_zs[0])]['dt'], label='z={:.2f}'.format(dataset_zs[0]))
 for i,zz in enumerate(dataset_zs):
 	animated_gif.add(dataset['{:.3f}'.format(zz)]['dt'], label='z={:.2f}'.format(zz))
