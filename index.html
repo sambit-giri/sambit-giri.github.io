@@ -6,6 +6,27 @@
 -->
 <html>
 	<head>
+
+		<style>
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 50.00%;
+  padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+</style>
+
+
 		<title>Sambit Giri</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -53,7 +74,7 @@
 							<article id="intro">
 								<h2 class="major">About</h2>
 								<span class="image main"><img src="images/pic01.jpg" width="100" height="350" alt="" /></span>
-								<p>I am a postdoctoral reseatch at the Institue for Compuational Science.</p>
+								<p>I am a postdoctoral reseatch at the Center for Theoretical Astrophysics and Cosmology (<a href="https://www.ctac.uzh.ch/en/" target="_blank">CTAC</a>), which is part of the Institute for Computational Science (<a href="https://www.ics.uzh.ch/en/" target="_blank">ICS</a>) at the University of Zurich.</p>
 							</article>
 
 						<!-- Work -->
@@ -71,6 +92,15 @@
 	      								<a href="https://arxiv.org/search/astro-ph?searchtype=author&query=Giri%2C+S+K" target="_blank">arXiv</a></li>
 	      						</ul>
 	      						</p>
+	      						<div class="row">
+  									<div class="column">
+    									<img src="data/ReionSim_xf.gif" alt="xf" style="width:100%">
+  									</div>
+  									<div class="column">
+    									<img src="data/ReionSim_dt.gif" alt="dt" style="width:100%">
+  									</div>
+									</div>
+
 
 								<p>About 50 million years after the birth of our universe, the first luminous sources formed. I seek signatures of these sources and study how they reionized gas in the intergalactic medium of our universe.</p>
 								<p>I also work on understanding the small-scale baryonic feedback processes that affects the observations of large-scale structures, such as the weak-lensing observations.</p>
