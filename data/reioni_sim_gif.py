@@ -93,7 +93,7 @@ animated_gif.save('ReionSim_dt.gif')
 
 
 fig, axs = plt.subplots(1,2,figsize=(11.5,5))
-tl0 = axs[0].set_title('$x_\mathrm{{HII}}={:.2f}$'.format(dataset['{:.3f}'.format(dataset_zs[0])]['xf'].mean()), fontsize=16)
+tl0 = axs[0].set_title('$x_\mathrm{{HII}}$', fontsize=16)
 dd0 = dataset['{:.3f}'.format(dataset_zs[0])]['xf']; dd0[0,0], dd0[-1,1] = 0,1
 im0 = axs[0].imshow(dd0, cmap='Greys', origin='lower')
 axs[0].set_ylabel('(Mpc)', fontsize=16)
@@ -105,7 +105,7 @@ axs[0].set_xticklabels(np.arange(100,714,200), fontsize=14)
 divider = make_axes_locatable(axs[0])
 cax = divider.append_axes('right', size='5%', pad=0.05)
 fig.colorbar(im0, cax=cax, orientation='vertical')
-tl1 =  axs[1].set_title('$\delta T_\mathrm{{b}} (z={:.2f})$'.format(dataset_zs[0]), fontsize=16)
+tl1 =  axs[1].set_title('$\delta T_\mathrm{{b}}$', fontsize=16)
 dd1 = dataset['{:.3f}'.format(dataset_zs[0])]['dt']; dd1[dd1>200] = 200; dd1[0,0], dd1[-1,1] = 0, 200
 im1 = axs[1].imshow(dd1, cmap='viridis', origin='lower')
 axs[1].set_ylabel('(Mpc)', fontsize=16)
@@ -119,21 +119,20 @@ cax = divider.append_axes('right', size='5%', pad=0.05)
 fig.colorbar(im1, cax=cax, orientation='vertical')
 fig.subplots_adjust(left=0.06, bottom=0.12, right=0.965, top=0.94, wspace=0.2, hspace=0.2)
 
-title0 = axs[0].text(0.5,1.0, "Start", bbox={'boxstyle':'round', 'facecolor':'wheat', 'alpha':0.95}, zorder=3, transform=axs[0].transAxes, fontsize=16)#, ha="center")
-title1 = axs[1].text(0.5,1.0, "Start", bbox={'boxstyle':'round', 'facecolor':'wheat', 'alpha':0.95}, zorder=3, transform=axs[1].transAxes, fontsize=16)#, ha="center")
+title0 = axs[0].text(0.05,0.05, "Start", bbox={'boxstyle':'round', 'facecolor':'wheat', 'alpha':0.9}, zorder=3, transform=axs[0].transAxes, fontsize=14)#, ha="center")
+title1 = axs[1].text(0.05,0.05, "Start", bbox={'boxstyle':'round', 'facecolor':'wheat', 'alpha':0.9}, zorder=3, transform=axs[1].transAxes, fontsize=14)#, ha="center")
 
 def animate(i):
     dd0 = dataset['{:.3f}'.format(dataset_zs[i])]['xf']; dd0[0,0], dd0[-1,1] = 0,1
     dd1 = dataset['{:.3f}'.format(dataset_zs[i])]['dt']; dd1[dd1>200] = 200; dd1[0,0], dd1[-1,1] = 0, 200
-    tl1.set_text('$\delta T_\mathrm{{b}} (z={:.2f})$'.format(dataset_zs[i]))
     im0.set_data(dd0)
     im1.set_data(dd1)
-    title0.set_text('$x_\mathrm{{HII}}={:.2f}$'.format(dataset['{:.3f}'.format(dataset_zs[i])]['xf'].mean()))
-    title1.set_text('$z={:.2f})$'.format(dataset_zs[i]))
+    title0.set_text('$\langle x_\mathrm{{HII}}\\rangle={:.2f}$'.format(dataset['{:.3f}'.format(dataset_zs[i])]['xf'].mean()))
+    title1.set_text('$z={:.2f}$'.format(dataset_zs[i]))
     return im0, im1,
 
-myAnimation = anim.FuncAnimation(fig, animate, frames=np.arange(len(dataset_zs)), \
-                                      interval=10, repeat=True)
+myAnimation = anim.FuncAnimation(fig, animate, frames=np.arange(len(dataset_zs)), interval=200, repeat=True)
+myAnimation.save('ReionSim.gif')
 
 # #### mandelbrot
 
