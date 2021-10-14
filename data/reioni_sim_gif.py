@@ -105,7 +105,7 @@ axs[0].set_xticklabels(np.arange(100,714,200), fontsize=14)
 divider = make_axes_locatable(axs[0])
 cax = divider.append_axes('right', size='5%', pad=0.05)
 fig.colorbar(im0, cax=cax, orientation='vertical')
-tl1 =  axs[1].set_title('$\delta T_\mathrm{{b}}$', fontsize=16)
+tl1 =  axs[1].set_title('$\delta T_\mathrm{{b}}$ (mK)', fontsize=16)
 dd1 = dataset['{:.3f}'.format(dataset_zs[0])]['dt']; dd1[dd1>200] = 200; dd1[0,0], dd1[-1,1] = 0, 200
 im1 = axs[1].imshow(dd1, cmap='viridis', origin='lower')
 axs[1].set_ylabel('(Mpc)', fontsize=16)
