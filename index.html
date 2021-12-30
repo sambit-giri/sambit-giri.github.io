@@ -100,13 +100,14 @@
 								<ul style="margin-top:-25px;margin-bottom:0px;">
 								  <li><a href="#EoR_research" style="color:#4da6ff;">Cosmic reionization</a>
 								  	<ul style="margin-top:0px;margin-bottom:0px;">
+								  		<li><a href="#EoR_research_modelling" style="color:#FFA500;">Modelling method</a></li>
 										  <li><a href="#EoR_research_struct_ident" style="color:#FFA500;">Structure identification</a></li>
 										  <li><a href="#EoR_research_beyond_ps" style="color:#FFA500;">Going beyond the power spectrum</a></li>
 										</ul>
 									</li>
 								  <li><a href="#bcm_research" style="color:#4da6ff;">Baryonic feedback process</a>
 								  	<ul style="margin-top:0px;margin-bottom:0px;">
-										  <li><a href="#bcm_research_modelling" style="color:#FFA500;">Modelling baryonic feedback processes</a></li>
+										  <li><a href="#bcm_research_modelling" style="color:#FFA500;">Modelling method</a></li>
 										  <li><a href="#bcm_research_BCemu" style="color:#FFA500;">Baryonic correction emulators</a></li>
 										</ul>
 								  </li>
@@ -127,6 +128,22 @@
 
 								<p>About 50 million years after the birth of our universe, the first luminous sources formed. I seek signatures of these sources and study how they reionized gas in the intergalactic medium (IGM) of our universe. Above I show an example of the reionization in a simulation volume of with a length of 714 Mpc (see <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema 2021</a> for details). The ionization state of the IGM is shown in the left panel. One can see the ionized regions (black) growing, merging and finally filling the entire universe. One interesting probe of this process is the 21-cm signal, which is produced by neutral hydrogen due to the spin-flip transition of its ground state. The right panel shows the corresponding 21-cm signal. The ionized regions are seen as absence of signal (dark-blue) in the map.</p>
 
+								<h4 style="color:#FFA500;"><a id="EoR_research_modelling">Modelling method</a></h4>
+
+								<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
+								<p><center><b>Numerical simulations</b></center>
+  							We simulate cosmic reionization by post-processing N-body simulation outputs with radiative transfer simulation code. One such code is called C<sup>2</sup>Ray (Mellema et al. 2006) that solves the transport of photons from luminous sources in three dimensions. With this method, we can accurately simulate very large simulation volumes (&sim;1 Gpc) that is very difficult to achieve with hydrodynamical simulation methods (<a href="https://arxiv.org/abs/1903.01294" target="_blank">Giri et al. 2019</a>; <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema 2021</a>). The figure below shows slices from such a large-scale reionization simulation.
+  							<img src="data/c2ray_slices_early_late.png" alt="slices_Giri2019" style="width:100%">
+  							</p>
+								</div>
+
+								<div class="row" style="margin-top:-30px;margin-bottom:0px;">
+								<p><center><b>Analytical simulations</b></center>
+  							In order to analyse 21-cm signal observations, we need a fast modelling method. In <a href="https://arxiv.org/abs/2011.12308" target="_blank">Schneider, Giri & Mirocha (2021)</a>, we introduced a halo-model based approach to model the 21-cm signal. In the figure below, we compare the power spectra derived from our halo-model based approach assuming exponential and extended Press-Schechter halo accretion (solid and dash-dotted lines) with that from 21cmFAST code (colored bands). 
+  							<img src="data/HM21cm_vs_21cmFAST.png" alt="HM21cm_Schneider2021" style="width:100%">
+  							</p>
+								</div>
+
 								<h4 style="color:#FFA500;"><a id="EoR_research_struct_ident">Structure identification</a></h4>
 
 								<div class="row">
@@ -139,28 +156,28 @@
 
 								<p>The 21-cm signal from the epoch of reionization is highly non-Gaussian. Therefore the power spectrum cannot completely characterise this signal. We have studied various metrics that can probe the non-Gaussian information (see my <a href="http://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1289039&dswid=1879" target="_blank">PhD thesis</a> for more discussion). Here I show few such summary statistics that can be estimated from the SKA-like image data.</p>
 
-								<div class="row">
+								<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
 								<p><center><b>Bubble size distributions</b></center>
   							<img src="data/bsds_Giri2018.png" alt="bsds_Giri2018" style="width:100%">
   							The bubble size distribution (BSD) measures the probability of sizes of the ionized regions (bubbles) during reionization. The BSD shows the growth of these bubbles at different epochs of reionization. The above figure in taken from <a href="https://arxiv.org/abs/1706.00665" target="_blank">Giri et al. (2018a)</a>, where the BSDs are shown for different models of reionization.
   							</p>
 								</div>
 
-								<div class="row">
+								<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
 								<p><center><b>Betti numbers</b></center>
   							<img src="data/betti_Giri2021.png" alt="betti_Giri2021" style="width:100%">
   							The Betti numbers quantify the morphology of different structures. In <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema (2021)</a>, we used the Betti numbers to study the morphology of ionized regions identified in 21-cm image data. The zeroth, first and second Betti numbers give the number of isolated structures, tunnels and enclosed voids respectively. The above figure taken from <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema (2021)</a> shows the evolution of the three Betti numbers as reionization progresses in three different models.
   							</p>
 								</div>
 
-								<div class="row">
+								<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
 								<p><center><b>Position dependent power spectrum</b></center>
   							<img src="data/mode_coupling_response_21cm_to_density.png" alt="PdPS_Giri2019" style="width:100%">
   							The Position dependent power spectrum (PdPS) measures the response of small-scale fluctuations to the large-scale fluctuations, which is pictorially shown in the left panel of the above figure. PdPS is mathematically equivalent to the integrated squeezed-limit bispectrum. The right panel of the above figure is taken from <a href="https://arxiv.org/abs/1811.09633" target="_blank">Giri et al. (2019a)</a> for various reionization models.
   							</p>
 								</div>
 
-								<div class="row">
+								<div class="row" style="margin-top:-30px;margin-bottom:0px;">
 								<p><center><b>Bispectrum</b></center>
   							<img src="data/bispec_Watkinson2019.png" alt="bispec_Watkinson2019" style="width:100%">
   							The bispectrum is a higher-order summary statistics. It is the Fourier counterpart of the three point correlation function. The above figure is taken from <a href="https://arxiv.org/abs/1808.02372" target="_blank">Watkinson et al. (2019)</a>. The left panel gives a visual representation of the structures probed by the bispectrum and the right panel gives the equilateral bispectrum calulated from the simulations of the time when first sources formed and heated the gas in the IGM.
@@ -172,17 +189,14 @@
 
 								<p>I also work on understanding the small-scale baryonic feedback processes that affects the observations of large-scale structures, such as the weak-lensing observations.</p>
 
-								<h4 style="color:#FFA500;"><a id="bcm_research_modelling">Modelling baryonic feedback processes</a></h4>
+								<h4 style="color:#FFA500;"><a id="bcm_research_modelling">Modelling method</a></h4>
 
 								<p>The dark matter around dark matter haloes (where the visible objects, such as galaxies and clusters, reside) follow the <a href="https://en.wikipedia.org/wiki/Navarro%E2%80%93Frenk%E2%80%93White_profile" target="_blank">NFW profile</a> (<a href="https://arxiv.org/abs/astro-ph/9508025" target="_blank">Navarro, Frenk & White 1996</a>). Due to the astrophysical processes inside haloes, the baryons are redistributed and thus do not follow the NFW profile (e.g. <a href="https://arxiv.org/abs/1104.1174" target="_blank">van Daalen et al. 2011</a>).
 								We model the impact of baryonic feedback processes on large-scale observations by parameterising the density of baryons around haloes (see figure below). These profiles can be constrained by galaxy observations (e.g. <a href="https://arxiv.org/abs/1810.08629" target="_blank">Schneider et al. 2019</a>; <a href="https://arxiv.org/abs/1908.05765" target="_blank">Debackere et al. 2020</a>; <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>).
-								</p>
-
-								<p>
 								<img src="data/matter_density_profiles.png" alt="matter_profiles" style="width:100%">
 								</p>
 
-								<div class="row">
+								<div class="row" style="margin-top:-30px;margin-bottom:0px;">
 								<p><center><b>In N-body simulations</b></center>
   							We displace the particles in dark matter (N-body) simulations outputs such that the matter profiles match the baryonic profile. In this process, we introduce new parameters that describe the baryonic profile. For details, see <a href="https://arxiv.org/abs/1510.06034" target="_blank">Schneider & Teyssier (2015)</a>. This method is computationally inexpensive compared to hydrodynamical simulations. We can derive the large-scale observables, such as the power spectrum and bispectrum, from the dispalced N-body simulations. In the figure below (taken from <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>), we show the ratio of power spectra from dark-matter-baryon and dark-matter-only simulations (power spectrum suppressions) at two redshifts. Here we fit the power spectrum suppressions from hydrodynamical simulations with our fast method.
   							<img src="data/Sk_bcm.png" alt="Sk_bcm" style="width:100%">
