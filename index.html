@@ -156,6 +156,32 @@
 								<h3 style="color:#4da6ff;"><a id="bcm_research">Baryonic feedback process</a></h3>
 
 								<p>I also work on understanding the small-scale baryonic feedback processes that affects the observations of large-scale structures, such as the weak-lensing observations.</p>
+
+								<h4 style="color:#FFA500;">Modelling baryonic feedback processes</h4>
+
+								<p>The dark matter around dark matter haloes (where the visible objects, such as galaxies and clusters, reside) follow the <a href="https://en.wikipedia.org/wiki/Navarro%E2%80%93Frenk%E2%80%93White_profile" target="_blank">NFW profile</a> (<a href="https://arxiv.org/abs/astro-ph/9508025" target="_blank">Navarro, Frenk & White 1996</a>). Due to the astrophysical processes inside haloes, the baryons are redistributed and thus do not follow the NFW profile (e.g. <a href="https://arxiv.org/abs/1104.1174" target="_blank">van Daalen et al. 2011</a>).
+								We model the impact of baryonic feedback processes on large-scale observations by parameterising the density of baryons around haloes (see figure below). These profiles can be constrained by galaxy observations (e.g. <a href="https://arxiv.org/abs/1810.08629" target="_blank">Schneider et al. 2019</a>; <a href="https://arxiv.org/abs/1908.05765" target="_blank">Debackere et al. 2020</a>; <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>).
+								</p>
+
+								<p>
+								<img src="data/matter_density_profiles.png" alt="matter_profiles" style="width:100%">
+								</p>
+
+								<div class="row">
+								<p><center><b>In N-body simulations</b></center>
+  							We displace the particles in dark matter (N-body) simulations outputs such that the matter profiles match the baryonic profile. In this process, we introduce new parameters that describe the baryonic profile. For details, see <a href="https://arxiv.org/abs/1510.06034" target="_blank">Schneider & Teyssier (2015)</a>. This method is computationally inexpensive compared to hydrodynamical simulations. We can derive the large-scale observables, such as the power spectrum and bispectrum, from the dispalced N-body simulations. In the figure below (taken from <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>), we show the ratio of power spectra from dark-matter-baryon and dark-matter-only simulations (power spectrum suppressions) at two redshifts. Here we fit the power spectrum suppressions from hydrodynamical simulations with our fast method.
+  							<img src="data/Sk_bcm.png" alt="Sk_bcm" style="width:100%">
+  							</p>
+								</div>
+
+								<h4 style="color:#FFA500;">Baryonic correction emulators</h4>
+
+								<p>Even though the modelling of baryonic feedback processes by displacing N-body simulations is computationally cheap, it is not fast enough to be used in a statistical inference framework to analyse observations. Therefore emulators of the observables using machine learning methods are helpful in achieving this task (<a href="https://arxiv.org/abs/2011.15018" target="_blank">Arico et al. 2021</a>; <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>). We build an emulator for modelling the suppression in power spectrum due to baryonic feedback processes, which is publicly available named <a href="https://github.com/sambit-giri/BCemu" target="_blank">BCemu</a>. In the figure below (taken from <a href="https://arxiv.org/abs/2110.02228" target="_blank">Schneider et al. 2022</a>), we show the constraints on cosmological parameters (S<sub>8</sub> and &Omega;<sub>m</sub>) using the <a href="https://arxiv.org/abs/2007.15633" target="_blank"> KiDS-1000</a> release of weak lensing data. We study the impact of baryonic feedback processes by including X-ray and kinematic Sunyaev-Zeldovich observations of galaxy clusters.
+
+								<img src="data/S8Om_Xray_kSZ.png" alt="S8Om_Xray_kSZ" style="width:100%">
+								</p>
+
+
 							</article>
 
 						<!-- CV -->
@@ -477,7 +503,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; BASED ON A DESIGN BY <a href="https://html5up.net">HTML5 UP</a>.</p>
+						<p class="copyright">&copy; BASED ON A DESIGN BY <a href="https://html5up.net">HTML5 UP</a>. Last updated on 30 Dec 2021.</p>
 					</footer>
 
 			</div>
