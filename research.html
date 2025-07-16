@@ -1,0 +1,208 @@
+<h2 class="major">Research</h2>
+<p>I primarily focus on two topics, which are the <a href="#EoR_research" style="color:#4da6ff;">cosmic reionization</a> 
+    and modeling <a href="#bcm_research" style="color:#4da6ff;">baryonic feedback processes</a> in large-scale observations.
+    I also develop state-of-art data analysis tools using the latest <a href="#ml_research" style="color:#4da6ff;">machine learning methods</a>.
+    Below I give a highlight of my research interests. Here I list the content of this page:
+<ul style="margin-top:-25px;margin-bottom:0px;">
+  <li><a href="#EoR_research" style="color:#4da6ff;">Cosmic reionization</a>
+      <ul style="margin-top:0px;margin-bottom:0px;">
+          <li><a href="#EoR_research_modelling" style="color:#FFA500;">Modelling method</a></li>
+          <li><a href="#EoR_research_21cm_signal" style="color:#FFA500;">The 21-cm signal</a></li>
+          <li><a href="#EoR_research_beyond_ps" style="color:#FFA500;">Going beyond the power spectrum</a></li>
+        </ul>
+    </li>
+  <li><a href="#bcm_research" style="color:#4da6ff;">Baryonic feedback process</a>
+      <ul style="margin-top:0px;margin-bottom:0px;">
+          <li><a href="#bcm_research_modelling" style="color:#FFA500;">Modelling method</a></li>
+          <li><a href="#bcm_research_BCemu" style="color:#FFA500;">Baryonic correction emulators</a></li>
+        </ul>
+  </li>
+  <li><a href="#ml_research" style="color:#4da6ff;">Machine learning tools</a>
+    <ul style="margin-top:0px;margin-bottom:0px;">
+        <li><a href="#ml_research_galaxy_spectra" style="color:#FFA500;">Analysing high-redshift galaxy spectra</a></li>
+        <li><a href="#ml_research_surrogate_models" style="color:#FFA500;">Building suggorate models</a></li>
+        <li><a href="#ml_research_struct_ident" style="color:#FFA500;">Structure identification</a></li>
+        <li><a href="#ml_research_foreground_21cm" style="color:#FFA500;">Foreground mitigation for 21-cm signal</a></li>
+      </ul>
+</li>
+</ul>
+</p>
+
+<h3 style="color:#4da6ff;" id="EoR_research">Cosmic reionization</h3>
+
+<div class="row">
+        <img src="data/ReionSim.gif" alt="xf_dt" style="width:100%">
+</div>
+
+<p>About 50 million years after the birth of our universe, the first luminous sources formed. I seek signatures of these sources and study how they reionized gas in the intergalactic medium (IGM) of our universe. Above I show an example of the reionization in a simulation volume of with a length of 714 Mpc (see <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema 2021</a> for details). The ionization state of the IGM is shown in the left panel. One can see the ionized regions (black) growing, merging and finally filling the entire universe. One interesting probe of this process is the 21-cm signal, which is produced by neutral hydrogen due to the spin-flip transition of its ground state. The right panel shows the corresponding 21-cm signal. The ionized regions are seen as absence of signal (dark-blue) in the map.</p>
+
+<h4 style="color:#FFA500;" id="EoR_research_modelling">Modelling method</h4>
+
+<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
+<p><center><b>Numerical simulations</b></center>
+We simulate cosmic reionization by post-processing N-body simulation outputs with radiative transfer simulation code. One such code is called C<sup>2</sup>Ray (Mellema et al. 2006) that solves the transport of photons from luminous sources in three dimensions. With this method, we can accurately simulate very large simulation volumes (&sim;1 Gpc) that is very difficult to achieve with hydrodynamical simulation methods (e.g. <a href="https://arxiv.org/abs/1903.01294" target="_blank">Giri et al. 2019b</a>; <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema 2021</a>). The figure below shows slices from such a large-scale reionization simulation.
+<img src="data/c2ray_slices_early_late.png" alt="slices_Giri2019" style="width:100%">
+</p>
+</div>
+
+<div class="row" style="margin-top:-30px;margin-bottom:0px;">
+<p><center><b>Analytical simulations</b></center>
+  In order to interpret 21-cm signal observations, we need a fast modelling method. In <a href="https://arxiv.org/abs/2011.12308" target="_blank">Schneider, Giri & Mirocha (2021)</a>, we introduced a halo-model based approach to model the 21-cm signal. In the figure below, we compare the power spectra derived from our halo-model based approach assuming exponential and extended Press-Schechter halo accretion (solid and dash-dotted lines) with that from 21cmFAST code (colored bands). 
+<img src="data/HM21cm_vs_21cmFAST.png" alt="HM21cm_Schneider2021" style="width:100%">
+</p>
+</div>
+
+<h4 style="color:#FFA500;" id="EoR_research_21cm_signal">The 21-cm signal</h4>
+
+<div class="row">
+<img src="data/models_z9.png" alt="xf_dt" style="width:100%">
+</div>
+
+<p>The 21-cm signal produced by the neutral hydrogen gas present in the intergalactic medium (IGM) during reionization contains a 
+treasure-trove of information about the reionization process. Within the Low-frequency Array (LOFAR) Epoch of Reionization 
+Science team, we are attempting to measure the strength of spatial fluctuations in the signal (or the power spectrum). We have 
+provided the tighest upper limit at a redshift of 9 (<a href="https://arxiv.org/abs/2002.07196" target="_blank">Mertens et al. 2020</a>) 
+and constrained the properties of the IGM using this observation (<a href="https://arxiv.org/abs/2002.07195" target="_blank">Ghara, Giri et al. 2020</a>).
+In the right panel above, we show the LOFAR upper limits (red points) along with many reionization models (coloured lines).
+We see that there are some model that violate the observed upper limits. In the left panel, we show a slice from an excluded model model 
+(blue dashed power spectrum given in the right panel).
+</p>
+
+
+<h4 style="color:#FFA500;" id="EoR_research_beyond_ps">Going beyond the power spectrum</h4>
+
+<p>The 21-cm signal from the epoch of reionization is highly non-Gaussian. Therefore the power spectrum cannot completely characterise 
+    this signal. We have studied various metrics that can probe the non-Gaussian information 
+    (see my <a href="http://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1289039&dswid=1879" target="_blank">PhD thesis</a> 
+    for more discussion). Here I show few such summary statistics that can be estimated from the SKA-like image data.</p>
+
+<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
+<p><center><b>Bubble size distributions</b></center>
+<img src="data/bsds_Giri2018.png" alt="bsds_Giri2018" style="width:100%">
+The bubble size distribution (BSD) measures the probability of sizes of the ionized regions (bubbles) during reionization. The BSD shows the growth of these bubbles 
+at different epochs of reionization. The above figure in taken from <a href="https://arxiv.org/abs/1706.00665" target="_blank">Giri et al. (2018a)</a>, 
+where the BSDs are shown for different models of reionization.
+</p>
+</div>
+
+<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
+<p><center><b>Betti numbers</b></center>
+<img src="data/betti_Giri2021.png" alt="betti_Giri2021" style="width:100%">
+The Betti numbers quantify the morphology of different structures. In <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema (2021)</a>, 
+we used the Betti numbers to study the morphology of ionized regions identified in 21-cm image data. The zeroth, first and second Betti numbers give the number 
+of isolated structures, tunnels and enclosed voids respectively. The above figure taken from <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema (2021)</a> 
+shows the evolution of the three Betti numbers as reionization progresses in three different models.
+</p>
+</div>
+
+<div class="row" style="margin-top:-30px;margin-bottom:-50px;">
+<p><center><b>Position dependent power spectrum</b></center>
+<img src="data/mode_coupling_response_21cm_to_density.png" alt="PdPS_Giri2019" style="width:100%">
+The Position dependent power spectrum (PdPS) measures the response of small-scale fluctuations to the large-scale fluctuations, which is pictorially 
+shown in the left panel of the above figure. PdPS is mathematically equivalent to the integrated squeezed-limit bispectrum. The right panel of the above 
+figure is taken from <a href="https://arxiv.org/abs/1811.09633" target="_blank">Giri et al. (2019a)</a> for various reionization models.
+</p>
+</div>
+
+<div class="row" style="margin-top:-30px;margin-bottom:0px;">
+<p><center><b>Bispectrum</b></center>
+<img src="data/bispec_Watkinson2019.png" alt="bispec_Watkinson2019" style="width:100%">
+The bispectrum is a higher-order summary statistics. It is the Fourier counterpart of the three point correlation function. The above figure is taken from 
+<a href="https://arxiv.org/abs/1808.02372" target="_blank">Watkinson et al. (2019)</a>. The left panel gives a visual representation of the structures probed 
+by the bispectrum and the right panel gives the equilateral bispectrum calulated from the simulations of the time when first sources formed and heated the 
+gas in the IGM.
+</p>
+</div>
+
+
+<h3 style="color:#4da6ff;" id="bcm_research">Baryonic feedback process</h3>
+
+<p>I also work on understanding the small-scale baryonic feedback processes that affects the observations of large-scale structures, such as the weak-lensing 
+    observations.</p>
+
+<h4 style="color:#FFA500;" id="bcm_research_modelling">Modelling method</h4>
+
+<p>The dark matter around dark matter haloes (where the visible objects, such as galaxies and clusters, reside) follow the 
+<a href="https://en.wikipedia.org/wiki/Navarro%E2%80%93Frenk%E2%80%93White_profile" target="_blank">NFW profile</a> (<a href="https://arxiv.org/abs/astro-ph/9508025" target="_blank">Navarro, Frenk & White 1996</a>). 
+Due to the astrophysical processes inside haloes, the baryons are redistributed and thus do not follow the NFW profile (e.g. <a href="https://arxiv.org/abs/1104.1174" target="_blank">van Daalen et al. 2011</a>).
+We model the impact of baryonic feedback processes on large-scale observations by parameterising the density of baryons around haloes (see figure below). These profiles can be constrained by galaxy observations 
+(e.g. <a href="https://arxiv.org/abs/1810.08629" target="_blank">Schneider et al. 2019</a>; <a href="https://arxiv.org/abs/1908.05765" target="_blank">Debackere et al. 2020</a>; <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>).
+<img src="data/matter_density_profiles.png" alt="matter_profiles" style="width:100%">
+</p>
+
+<div class="row" style="margin-top:-30px;margin-bottom:0px;">
+<p><center><b>In N-body simulations</b></center>
+We displace the particles in dark matter (N-body) simulations outputs such as the matter profiles match the baryonic profile. 
+In this process, we introduce new parameters that describe the baryonic profile. For details, see <a href="https://arxiv.org/abs/1510.06034" target="_blank">Schneider & Teyssier (2015)</a>. 
+This method is computationally inexpensive compared to hydrodynamical simulations. We can derive the large-scale observables, 
+such as the power spectrum and bispectrum, from the dispalced N-body simulations. In the figure below (taken from <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>), 
+we show the ratio of power spectra from dark-matter-baryon and dark-matter-only simulations (power spectrum suppressions) at two redshifts. Here we fit the power spectrum suppressions from 
+hydrodynamical simulations with our fast method.
+<img src="data/Sk_bcm.png" alt="Sk_bcm" style="width:100%">
+</p>
+</div>
+
+<h4 style="color:#FFA500;" id="bcm_research_BCemu">Baryonic correction emulators</h4>
+
+<p>Even though the modelling of baryonic feedback processes by displacing N-body simulations is computationally cheap, it is not fast enough to be used in a statistical inference framework to analyse observations. Therefore emulators of the observables using machine learning methods are helpful in achieving this task (<a href="https://arxiv.org/abs/2011.15018" target="_blank">Arico et al. 2021</a>; <a href="https://arxiv.org/abs/2108.08863" href="_blank">Giri & Schneider 2021</a>). We build an emulator for modelling the suppression in power spectrum due to baryonic feedback processes, which is publicly available named <a href="https://github.com/sambit-giri/BCemu" target="_blank">BCemu</a>. In the figure below (taken from <a href="https://arxiv.org/abs/2110.02228" target="_blank">Schneider et al. 2022</a>), we show the constraints on cosmological parameters (S<sub>8</sub> and &Omega;<sub>m</sub>) using the <a href="https://arxiv.org/abs/2007.15633" target="_blank"> KiDS-1000</a> release of weak lensing data. We study the impact of baryonic feedback processes on these constraints by including X-ray and kinematic Sunyaev-Zeldovich observations of galaxy clusters with the weak lensing data.
+
+<img src="data/S8Om_Xray_kSZ.png" alt="S8Om_Xray_kSZ" style="width:100%">
+</p>
+
+
+<h3 style="color:#4da6ff;" id="ml_research">Machine learning tools</h3>
+
+<p>I frequently implement advanced data analysis methods, such as machine learning, in my research work. I am also involved in developing new 
+    machine learning architecture conducive for Big data produced in the field of astronomy.
+</p>
+
+<h4 style="color:#FFA500;" id="ml_research_galaxy_spectra">Analysing high-redshift galaxy spectra</h4>
+
+<p>Recently, the JWST started observing the high-redshift galaxies. It will provide us with huge amount of galaxy spectra, 
+and tranditional analysis methods will be time consuming. Therefore, I developed a machine learning-based framework to
+identify Lyman continuum leaking galaxies from large data sets of spectra (<a href="https://arxiv.org/abs/1903.01483">Giri et al. 2020</a>).
+</p>
+
+<h4 style="color:#FFA500;" id="ml_research_surrogate_models">Building suggorate models</h4>
+
+<p>Machine learning-based surrogate models are a very useful way on speeding up any computationally expensive modelling method.
+    We developed several surrogate models or emulators. Here I list these emulators:
+    <ul style="margin-top:-25px;margin-bottom:0px;">
+      <li>21-cm signal power spectrum (Ghara, Giri et al. 2020)</li>
+      <li>Impact of baryonic feedback processes on the matter power spectrum (Giri & Schneider 2021)</li>
+      <li>Non-standard dark matter models</li>
+      <ul style="margin-top:0px;margin-bottom:0px;">
+        <li>Cold+warm dark matter (Parimbelli et al. 2021)</li>
+        <li>Decaying dark matter (Bucko, Giri, Schneider 2023)</li>
+      </ul>
+    </ul>
+</p>
+
+<h4 style="color:#FFA500;" id="ml_research_struct_ident">Structure identification</h4>
+
+<div class="row">
+<img src="data/slic_identification.png" alt="xf_dt" style="width:100%">
+</div>
+
+<p>The upcoming Square Kilometre Array (SKA) will revolutionize the field by producing images of distribution of 
+neutral hydrogen during reionization using the 21-cm signal. In the left panel of the above image, I show an expected 
+image from the SKA. An interesting information contained in such images is the ionized regions, where most of the 
+luminous sources reside. Identifying these regions will not only help us understand the evolution of the reionization 
+process (<a href="https://arxiv.org/abs/1706.00665" target="_blank">Giri et al. 2018a</a>, 
+<a href="https://arxiv.org/abs/1903.01294" target="_blank">2019b</a>; <a href="https://arxiv.org/abs/2012.12908" target="_blank">Giri & Mellema 2021</a>) 
+but also strategise complementary galaxy observations, such as Euclid, James Webb Space Telescope (JWST), 
+Nancy Grace Roman Space Telescope and Extremely Large Telescope (ELT) 
+(<a href="https://arxiv.org/abs/1905.00437" target="_blank">Zackrisson et al. 2020</a>). We have developed techniques 
+to identify meaningful features in noisy data (<a href="https://arxiv.org/abs/1801.06550" target="_blank">Giri et al. 2018b</a>; 
+<a href="https://arxiv.org/abs/2102.06713" target="_blank">Bianco et al. 2021</a>). In the right panel of the above image, 
+I show the true ionized regions (red) and the regions identified by one of our methods (green boundaries). These methods along 
+with the tools to create mock SKA images are packaged into an open-source framework, <a href="https://tools21cm.readthedocs.io/" target="_blank">Tools21cm</a>.</p>
+
+
+<h4 style="color:#FFA500;" id="ml_research_foreground_21cm">Foreground mitigation for 21-cm signal</h4>
+
+<p>One of the most difficult contaminants of the 21-cm signal observations from the epoch of reionization 
+    is the foregrounds that will be orders of magnitude higher in strength. We are developing a machine learning-based
+    foreground mitigation framework. Currently, we developed SegU-Net v2.0 (Bianco, Giri, et al 2023) that will be able 
+    to identify structures in 21-cm signal image data contaminated with foreground.
+</p>
