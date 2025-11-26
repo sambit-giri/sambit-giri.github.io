@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Cosmological Calculator</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FA8072;
+            --background-color: #1b1f22;
+            --text-color: #ffffff;
+            --input-bg-color: rgba(255, 255, 255, 0.075);
+            --input-border-color: #ffffff;
+            --card-bg-color: rgba(27, 31, 34, 0.85);
+        }
+
+        html {
+            font-size: 16pt;
+        }
+
+        @media screen and (max-width: 736px) {
+            html {
+                font-size: 12pt;
+            }
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: "Source Sans Pro", sans-serif;
+            font-weight: 300;
+            line-height: 1.65;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            margin: 0;
+            background-image: url('https://storage.googleapis.com/drive--prod/static/ac5e5d16-c0c2-4753-9a74-b7787f0b985c/doc_images/image-2.jpeg');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: var(--card-bg-color);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h1, h2 {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            border-top: 1px solid var(--input-border-color);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            background-color: var(--input-bg-color);
+            border: 1px solid var(--input-border-color);
+            border-radius: 4px;
+            color: var(--text-color);
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 1px var(--primary-color);
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 4px;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        button:hover {
+            background-color: #ffffff;
+        }
+
+        #results {
+            margin-top: 2rem;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item span:first-child {
+            font-weight: 600;
+        }
+        
+        .result-item span:last-child {
+            font-family: "Courier New", monospace;
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary-color);
+            transition: color 0.2s, border-bottom-color 0.2s;
+        }
+
+        .footer-link a:hover {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Cosmological Calculator</h1>
+        
+        <div id="params">
+            <div class="input-grid">
+                <div class="input-group">
+                    <label for="h0">Hubble Constant (H₀) [km/s/Mpc]</label>
+                    <input id="h0" type="number" value="70">
+                </div>
+                <div class="input-group">
+                    <label for="omega_m">Omega Matter (Ωₘ)</label>
+                    <input id="omega_m" type="number" step="0.01" value="0.3">
+                </div>
+                <div class="input-group">
+                    <label for="omega_l">Omega Lambda (Ωₗ)</label>
+                    <input id="omega_l" type="number" step="0.01" value="0.7">
+                </div>
+                <div class="input-group">
+                    <label for="z">Redshift (z)</label>
+                    <input id="z" type="number" step="0.1" value="1.0">
+                </div>
+            </div>
+            <button onclick="calculate()">Calculate</button>
+        </div>
+
+        <div id="results" style="display: none;">
+            <h2>Results</h2>
+            <div class="result-item">
+                <span>Age of Universe</span>
+                <span id="age_Gyr"></span>
+            </div>
+            <div class="result-item">
+                <span>Lookback Time</span>
+                <span id="lookback_Gyr"></span>
+            </div>
+            <div class="result-item">
+                <span>Comoving Distance</span>
+                <span id="comov_dist_Mpc"></span>
+            </div>
+            <div class="result-item">
+                <span>Angular Diameter Distance</span>
+                <span id="ang_diam_dist_Mpc"></span>
+            </div>
+            <div class="result-item">
+                <span>Luminosity Distance</span>
+                <span id="lum_dist_Mpc"></span>
+            </div>
+        </div>
+        <div class="footer-link">
+            <a href="index.html">Back to Main Site</a>
+        </div>
+    </div>
+
+    <script>
+        // Cosmological Calculator Logic
+        // Based on Ned Wright's Cosmology Calculator formalism
+        // http://www.astro.ucla.edu/~wright/CosmoCalc.html
+
+        function calculate() {
+            // Get parameters from input fields
+            const H0 = parseFloat(document.getElementById('h0').value); // Hubble Constant
+            const WM = parseFloat(document.getElementById('omega_m').value); // Omega_matter
+            const WV = parseFloat(document.getElementById('omega_l').value); // Omega_lambda (dark energy)
+            const z = parseFloat(document.getElementById('z').value); // Redshift
+
+            // Constants
+            const c = 299792.458; // speed of light in km/s
+            const Tyr = 977.8; // coefficent for converting H0 to Gyr^-1
+
+            // Derived parameters
+            const WR = 0; // Omega_radiation (assumed to be 0 for simplicity at z < 1000)
+            const WK = 1 - WM - WR - WV; // Omega_curvature
+            const h = H0 / 100;
+            const DH = c / H0; // Hubble distance in Mpc
+
+            // --- Calculation Logic ---
+            let age = 0;
+            const n = 1000; // number of steps for numerical integration
+            
+            // Age of the universe calculation
+            for (let i = 0; i < n; i++) {
+                const a = (i + 0.5) / n;
+                const adot = Math.sqrt(WK + (WM / a) + (WR / (a*a)) + (WV * a * a));
+                age += 1 / adot;
+            }
+            age = age / n;
+            const age_Gyr = (Tyr / H0) * age;
+
+            // Lookback time, comoving distance, etc.
+            let DCMR = 0; // Comoving distance
+            let DTT = 0; // Lookback time
+
+            // Numerical integration for distances
+            for (let i = 0; i < n; i++) {
+                const a = 1 / (1 + z * (1 - (i + 0.5) / n));
+                const adot = Math.sqrt(WK + (WM / a) + (WR / (a*a)) + (WV * a * a));
+                DTT += 1 / adot;
+                DCMR += 1 / (a * adot);
+            }
+            DTT = DTT / n;
+            DCMR = DCMR / n;
+
+            const lookback_Gyr = (Tyr / H0) * DTT * z;
+            const comov_dist_Mpc = (DH * DCMR * z);
+
+            let DA = 0; // Angular diameter distance
+            let DL = 0; // Luminosity distance
+            
+            if (WK > 0.00001) {
+                const y = Math.sqrt(WK) * comov_dist_Mpc / DH;
+                DA = (DH / (1 + z)) * (1 / Math.sqrt(WK)) * Math.sinh(y);
+                DL = (1 + z) * (1 + z) * DA;
+            } else if (WK < -0.00001) {
+                const y = Math.sqrt(Math.abs(WK)) * comov_dist_Mpc / DH;
+                DA = (DH / (1 + z)) * (1 / Math.sqrt(Math.abs(WK))) * Math.sin(y);
+                DL = (1 + z) * (1 + z) * DA;
+            } else { // Flat universe
+                DA = comov_dist_Mpc / (1 + z);
+                DL = (1 + z) * comov_dist_Mpc;
+            }
+
+            // Display results
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('age_Gyr').textContent = `${age_Gyr.toFixed(2)} Gyr`;
+            document.getElementById('lookback_Gyr').textContent = `${lookback_Gyr.toFixed(2)} Gyr`;
+            document.getElementById('comov_dist_Mpc').textContent = `${comov_dist_Mpc.toFixed(0)} Mpc`;
+            document.getElementById('ang_diam_dist_Mpc').textContent = `${DA.toFixed(0)} Mpc`;
+            document.getElementById('lum_dist_Mpc').textContent = `${DL.toFixed(0)} Mpc`;
+        }
+
+        // Perform an initial calculation on page load
+        window.onload = calculate;
+    </script>
+
+</body>
+</html>
