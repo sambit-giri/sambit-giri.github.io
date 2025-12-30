@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sambit Giri - Cosmology & Data Science</title>
+    <script src="https://kit.fontawesome.com/6e81e94e2f.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            color: #333;
+            border-bottom-color: #FA8072;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #222;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .hero .tagline {
+            font-size: 1.1rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: #666;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #FA8072;
+            transform: translateY(-2px);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            border-color: #FA8072;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: #FA8072;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Sections */
+        .section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-section {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #222;
+        }
+
+        .content-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+            color: #333;
+        }
+
+        .content-section p {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .content-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #FA8072;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            margin-right: 1rem;
+        }
+
+        .btn:hover {
+            background: #e76f5f;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(250, 128, 114, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #FA8072;
+            color: #FA8072;
+        }
+
+        .btn-outline:hover {
+            background: #FA8072;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem 0;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 2rem 1rem;
+            }
+        }
+
+        /* Research Item Styles */
+        .research-item {
+            border-left: 3px solid #FA8072;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .research-item h4 {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Paper List */
+        .paper-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .paper-list li {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+            margin-bottom: 0;
+        }
+
+        .paper-list li:last-child {
+            border-bottom: none;
+        }
+
+        .paper-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .paper-meta {
+            color: #888;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">Sambit Giri</a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-section="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-section="research">Research</a></li>
+                    <li><a href="#" class="nav-link" data-section="publications">Publications</a></li>
+                    <li><a href="#" class="nav-link" data-section="codes">Codes</a></li>
+                    <li><a href="#" class="nav-link" data-section="cv">CV</a></li>
+                    <li><a href="#" class="nav-link" data-section="contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <h1>Sambit Giri</h1>
+                <p class="subtitle">Machine Learning & Data Analysis Expert in Astronomy and Cosmology</p>
+                <p class="tagline">Leveraging AI and advanced statistical methods to decode the universe's largest structures</p>
+                
+                <div class="social-links">
+                    <a href="https://twitter.com/sam_giri" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/sambit-giri/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/sambit-giri/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://orcid.org/0000-0002-2560-536X" target="_blank"><i class="fab fa-orcid"></i></a>
+                    <a href="https://github.com/sambit-giri/AstronomyCalc/tree/main/notebooks" target="_blank"><i class="fab fa-python"></i></a>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Machine Learning in Cosmology</h3>
+                    <p>Deep learning, neural networks, and AI-driven analysis of astronomical data to extract insights from large-scale surveys.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Statistical Modeling</h3>
+                    <p>Bayesian inference, MCMC methods, and advanced statistical techniques for parameter estimation and model selection.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Big Data Analysis</h3>
+                    <p>Processing and analyzing massive astronomical datasets from surveys to understand cosmic structure formation.</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Computational Methods</h3>
+                    <p>High-performance computing, numerical simulations, and algorithm development for cosmological research.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="content-section">
+                <h2>About</h2>
+                <p>I am a machine learning and data analysis expert specializing in astronomical and cosmological applications. My work combines cutting-edge AI techniques with astrophysics to solve complex problems in understanding the universe.</p>
+                
+                <p>With deep expertise in both the theoretical foundations of cosmology and the practical applications of modern data science, I develop innovative approaches to extract meaningful insights from massive astronomical datasets and advance our understanding of cosmic structure formation.</p>
+
+                <div style="margin: 2rem 0;">
+                    <img src="images/flammarion2019.jpg" alt="Flammarion engraving modern rendition" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                    <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic;">
+                        A new rendition of the <a href="https://en.wikipedia.org/wiki/Flammarion_engraving" target="_blank" style="color: #FA8072;">Flammarion engraving</a> 
+                        created for the cover page of <a href="http://www.diva-portal.org/smash/record.jsf?pid=diva2%3A1289039&dswid=-7198" target="_blank" style="color: #FA8072;">my PhD thesis</a>. 
+                        The Flammarion engraving represents humanity's curiosity about the universe. Our version envisions that the Square Kilometre Array (SKA) 
+                        will play a pivotal role in advancing our quest for understanding the cosmos.
+                    </p>
+                </div>
+
+                <h3>Technical Expertise</h3>
+                <ul>
+                    <li><strong>Machine Learning:</strong> Deep learning, neural networks, CNNs, GANs, transformers for astronomical data</li>
+                    <li><strong>Statistical Methods:</strong> Bayesian inference, MCMC, Gaussian processes, likelihood analysis</li>
+                    <li><strong>Data Analysis:</strong> Large-scale survey data processing, signal extraction, feature engineering</li>
+                    <li><strong>Scientific Computing:</strong> Python, TensorFlow, PyTorch, scikit-learn, JAX, NumPy ecosystem</li>
+                    <li><strong>Cosmological Simulations:</strong> N-body simulations, hydrodynamical simulations, emulators</li>
+                    <li><strong>High-Performance Computing:</strong> Parallel computing, GPU acceleration, distributed systems</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research" class="section">
+            <div class="content-section">
+                <h2>Research</h2>
+                
+                <div class="research-item">
+                    <h4>Machine Learning for Large-Scale Structure</h4>
+                    <div style="margin: 1rem 0;">
+                        <img src="data/ReionSim.gif" alt="Reionization simulation" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                        <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic;">
+                            Reionization simulation showing the ionization state (left) and 21-cm signal (right) in a 714 Mpc volume.
+                        </p>
+                    </div>
+                    <p>Developing and applying deep learning architectures to analyze and predict the formation of cosmic structures. Using convolutional neural networks and generative models to understand the complex patterns in the cosmic web and extract physical parameters from observational data.</p>
+                </div>
+
+                <div class="research-item">
+                    <h4>Bayesian Inference & Parameter Estimation</h4>
+                    <div style="margin: 1rem 0;">
+                        <img src="data/models_z9.png" alt="21-cm models" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                        <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic;">
+                            LOFAR upper limits (red points) with various reionization models, constraining properties of the intergalactic medium.
+                        </p>
+                    </div>
+                    <p>Implementing advanced statistical methods including MCMC, nested sampling, and Gaussian processes to constrain cosmological parameters from survey data. Creating efficient inference pipelines for high-dimensional parameter spaces.</p>
+                </div>
+
+                <div class="research-item">
+                    <h4>Structure Identification with Deep Learning</h4>
+                    <div style="margin: 1rem 0;">
+                        <img src="data/slic_identification.png" alt="Structure identification" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                        <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic;">
+                            Machine learning-based identification of ionized regions in noisy 21-cm observations from the Square Kilometre Array.
+                        </p>
+                    </div>
+                    <p>Developed techniques to identify meaningful features in noisy astronomical data using machine learning. These methods are packaged into the open-source framework, <a href="https://tools21cm.readthedocs.io/" target="_blank" style="color: #FA8072;">Tools21cm</a>.</p>
+                </div>
+
+                <div class="research-item">
+                    <h4>Baryonic Feedback Modeling</h4>
+                    <div style="margin: 1rem 0;">
+                        <img src="data/S8Om_Xray_kSZ.png" alt="Cosmological constraints" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                        <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic;">
+                            Constraints on cosmological parameters using KiDS-1000 weak lensing data combined with X-ray and kinematic observations.
+                        </p>
+                    </div>
+                    <p>Building emulators and surrogate models using machine learning to accelerate cosmological simulations. Applying likelihood-free inference methods to compare observations with theoretical predictions efficiently.</p>
+                </div>
+
+                <div class="research-item">
+                    <h4>Advanced Summary Statistics</h4>
+                    <div style="margin: 1rem 0;">
+                        <img src="data/betti_Giri2021.png" alt="Betti numbers" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+                        <p style="font-size: 0.85rem; color: #888; margin-top: 0.5rem; font-style: italic;">
+                            Betti numbers quantifying the morphology of ionized regions during reionization using topological data analysis.
+                        </p>
+                    </div>
+                    <p>Leveraging artificial intelligence for automated pattern recognition, signal detection, and hypothesis generation in astronomical data. Combining domain expertise with ML to enable new scientific discoveries.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <div class="content-section">
+                <h2>Publications</h2>
+                <p>My research has been published in leading astrophysics and cosmology journals. You can find a complete list of my publications through the links below.</p>
+                
+                <a href="https://orcid.org/0000-0002-2560-536X" target="_blank" class="btn">View on ORCID</a>
+                <a href="#" class="btn btn-outline">Google Scholar</a>
+                
+                <p style="margin-top: 2rem; color: #888;">For collaboration inquiries or to discuss research, please feel free to reach out through the contact page.</p>
+            </div>
+        </section>
+
+        <!-- Codes Section -->
+        <section id="codes" class="section">
+            <div class="content-section">
+                <h2>Codes & Tools</h2>
+                <p>I develop and maintain open-source machine learning and data analysis tools specifically designed for astronomical and cosmological research. These tools enable researchers to apply state-of-the-art ML techniques to their data.</p>
+
+                <h3>ML Tools for Cosmology</h3>
+                <p>Production-ready implementations of machine learning models for cosmological data analysis, including neural network architectures optimized for astronomical datasets, pre-trained models, and inference pipelines.</p>
+
+                <h3>AstronomyCalc</h3>
+                <p>A comprehensive collection of Jupyter notebooks demonstrating practical applications of data science and machine learning in astronomy. Includes tutorials on statistical analysis, data visualization, and ML model development for cosmological research.</p>
+                
+                <a href="https://github.com/sambit-giri/" target="_blank" class="btn">View on GitHub</a>
+                <a href="https://github.com/sambit-giri/AstronomyCalc/tree/main/notebooks" target="_blank" class="btn btn-outline">ML Notebooks</a>
+
+                <h3>Data Analysis Pipelines</h3>
+                <p>Scalable data processing pipelines for large astronomical surveys, featuring automated quality control, feature extraction, and statistical analysis tools. Built with modern Python data science stack including pandas, scikit-learn, and PyTorch.</p>
+            </div>
+        </section>
+
+        <!-- CV Section -->
+        <section id="cv" class="section">
+            <div class="content-section">
+                <h2>Curriculum Vitae</h2>
+                <p>My CV showcases extensive experience in applying machine learning and advanced data analysis techniques to cosmological research, including development of novel algorithms, leadership of data-intensive projects, and contributions to major astronomical surveys.</p>
+                
+                <button class="btn">Download CV (PDF)</button>
+                
+                <h3>Highlights</h3>
+                <p><strong>Machine Learning Expert</strong> with proven track record in developing and deploying AI solutions for astronomical data analysis. Specialized in deep learning for cosmic structure analysis, Bayesian inference for parameter estimation, and scalable data processing pipelines for large surveys.</p>
+                
+                <p><strong>Technical Skills:</strong> Python (TensorFlow, PyTorch, JAX), statistical modeling (MCMC, nested sampling), high-performance computing, version control (Git), containerization (Docker), and cloud computing platforms.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="content-section">
+                <h2>Contact</h2>
+                <p>I'm always interested in discussing machine learning applications in cosmology, data analysis collaborations, or consulting opportunities in astronomical data science. Feel free to reach out through any of the following channels:</p>
+
+                <div class="social-links" style="justify-content: flex-start; margin-top: 2rem;">
+                    <a href="https://twitter.com/sam_giri" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/sambit-giri/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/sambit-giri/" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:your.email@example.com" class="btn" style="margin-left: 1rem;">Email Me</a>
+                </div>
+
+                <h3>Collaboration & Consulting</h3>
+                <p>I'm available for collaborations on ML-driven cosmology projects, data analysis consulting for astronomical surveys, and developing custom machine learning solutions for astrophysics research challenges.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Sambit Giri. Based on a design by HTML5 UP. Last updated December 30, 2025.</p>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links and sections
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const sectionId = this.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
