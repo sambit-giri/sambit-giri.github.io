@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Sambit Giri | Astrophysicist & Data Scientist</title>
+    
+    <!-- Tailwind CSS (via CDN - No installation required) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', '"Roboto"', 'Helvetica', 'Arial', 'sans-serif'],
+                        serif: ['Charter', '"Bitstream Charter"', 'Georgia', 'serif'],
+                        mono: ['Menlo', 'Monaco', 'Consolas', '"Liberation Mono"', '"Courier New"', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons (via CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS for Scrollbars -->
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(30, 41, 59, 0.8); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(71, 85, 105, 0.8); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Smooth transitions for visualizer and tabs */
+        .fade-enter { opacity: 0; z-index: 0; }
+        .fade-enter-active { opacity: 1; z-index: 10; transition: opacity 1s ease-in-out; }
+    </style>
+</head>
+<body class="min-h-screen bg-[#060913] text-slate-300 font-sans selection:bg-cyan-500/30">
+
+    <!-- Cosmic Web Particle Background -->
+    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+    
+    <!-- Decorative Glowing Background Orbs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen">
+        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-cyan-900/10 blur-[150px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[150px]"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6 bg-transparent">
+        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center relative z-10">
+            <div class="text-xl font-bold tracking-tighter text-slate-100 flex items-center gap-2">
+                <span class="text-cyan-500">Dr.</span> Sambit Giri
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
+                <a href="#home" class="nav-link hover:text-cyan-400 transition-colors">Home</a>
+                <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
+                <a href="#research" class="nav-link hover:text-cyan-400 transition-colors">Research</a>
+                <a href="#teaching" class="nav-link hover:text-cyan-400 transition-colors">Teaching</a>
+                <a href="#publications" class="nav-link hover:text-cyan-400 transition-colors">Publications</a>
+                <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+        </div>
+        <!-- Horizontal Scroll Progress Bar -->
+        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-slate-800/50 z-20">
+            <div id="scroll-progress" class="h-full bg-gradient-to-r from-cyan-500 to-indigo-500 transition-all duration-150 ease-out" style="width: 0%"></div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-6">
+        
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[85vh] flex flex-col justify-center pt-32 pb-16 relative">
+            <div class="grid lg:grid-cols-12 gap-12 items-center w-full">
+                
+                <!-- Left Content Area -->
+                <div class="lg:col-span-7">
+                    <!-- Photo and Name Lockup -->
+                    <div class="flex items-center gap-6 mb-8">
+                        <div class="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                            <div class="absolute inset-0 bg-slate-800 border-2 border-slate-700/50 rounded-full shadow-xl flex items-center justify-center overflow-hidden">
+                                <i data-lucide="user" class="w-12 h-12 text-slate-600"></i>
+                            </div>
+                            <img src="images/profile.jpg" alt="Dr. Sambit Giri" class="absolute inset-0 w-full h-full object-cover rounded-full z-10 shadow-xl border-2 border-slate-700/50" onerror="this.style.opacity='0'" />
+                            <div class="absolute inset-0 rounded-full shadow-[0_0_30px_rgba(34,211,238,0.15)] pointer-events-none z-20"></div>
+                        </div>
+                        <div>
+                            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-100 tracking-tight mb-2">Sambit Giri</h1>
+                            <h2 class="text-cyan-400 font-mono text-sm md:text-base tracking-wide uppercase">Astrophysicist & Data Scientist</h2>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-slate-400 mb-8 tracking-tight leading-tight">
+                        Bridging theoretical physics <br class="hidden lg:block" />
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+                            and data-driven discoveries.
+                        </span>
+                    </h2>
+                    
+                    <p class="font-serif text-lg md:text-xl text-slate-300 mb-8 max-w-2xl leading-relaxed">
+                        I develop scalable, simulation-based inference frameworks to understand how astrophysical processes shape cosmological structures. By combining physical modeling, machine learning, and massive datasets, I connect theories of the early universe directly to observations from <span class="font-sans font-medium text-slate-200">LOFAR, JWST, Euclid, SKA</span> and the <span class="font-sans font-medium text-slate-200">Roman Space Telescope</span>.
+                    </p>
+
+                    <!-- Leadership Badges -->
+                    <div class="flex flex-wrap gap-2.5 mb-10 max-w-2xl" id="hero-badges">
+                        <!-- Populated by JS -->
+                    </div>
+                    
+                    <!-- Social / Academic Buttons -->
+                    <div class="flex flex-wrap gap-3">
+                        <a href="https://scholar.google.se/citations?user=Qqf3ThUAAAAJ&hl=en" target="_blank" class="px-4 py-2 bg-slate-800/80 border border-slate-700 text-slate-200 rounded-lg hover:bg-slate-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-all flex items-center gap-2 text-sm font-medium">
+                            <i data-lucide="trending-up" class="w-4 h-4"></i> Scholar
+                        </a>
+                        <a href="https://github.com/sambit-giri" target="_blank" class="px-4 py-2 bg-slate-800/80 border border-slate-700 text-slate-200 rounded-lg hover:bg-slate-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-all flex items-center gap-2 text-sm font-medium">
+                            <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                        </a>
+                        <a href="https://orcid.org/0000-0002-2560-536X" target="_blank" class="px-4 py-2 bg-slate-800/80 border border-slate-700 text-slate-200 rounded-lg hover:bg-slate-700 hover:border-cyan-500/50 hover:text-cyan-400 transition-all flex items-center gap-2 text-sm font-medium">
+                            <!-- Custom ORCID SVG -->
+                            <svg viewBox="0 0 24 24" class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z" /></svg>
+                            ORCID
+                        </a>
+                        <a href="CV_Giri.pdf" download class="px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded-lg hover:bg-cyan-500/20 transition-all flex items-center gap-2 text-sm font-medium">
+                            <i data-lucide="download" class="w-4 h-4"></i> CV <span class="text-[10px] opacity-70 ml-1">(Feb '26)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Area (Hero Visualizer) -->
+                <div class="lg:col-span-5 hidden lg:block w-full">
+                    <div class="relative w-full max-w-md mx-auto aspect-[4/3]">
+                        <div class="absolute inset-0 bg-cyan-500/20 blur-[100px] rounded-full transform translate-x-4 translate-y-4 pointer-events-none"></div>
+                        <div class="absolute inset-0 bg-[#060913]/60 backdrop-blur-xl border border-slate-700/50 rounded-2xl overflow-hidden shadow-2xl flex flex-col transform transition-transform hover:-translate-y-2 duration-500">
+                            <!-- IDE Header -->
+                            <div class="h-10 border-b border-slate-700/50 flex items-center px-4 gap-2 bg-slate-800/40">
+                                <div class="flex gap-1.5">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-slate-600/80"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-slate-600/80"></div>
+                                    <div class="w-2.5 h-2.5 rounded-full bg-slate-600/80"></div>
+                                </div>
+                                <span class="ml-3 text-[11px] font-mono text-slate-400/80 tracking-wide">visualize_structures.py</span>
+                            </div>
+                            <!-- Dynamic Display Area -->
+                            <div class="flex-grow relative bg-[#020617] overflow-hidden" id="hero-visuals-container">
+                                <!-- SVGs injected via JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Updates Ticker -->
+        <section id="recent-updates" class="py-12 border-y border-slate-800/50 mb-12">
+            <div class="flex items-center mb-8">
+                <h2 class="text-xl font-bold text-slate-100">Recent Updates</h2>
+                <div class="h-px bg-slate-800 flex-grow ml-6 max-w-xs"></div>
+            </div>
+            
+            <div id="news-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                <!-- Populated by JS -->
+            </div>
+
+            <div class="flex justify-center mt-6">
+                <button id="toggle-news-btn" class="px-5 py-2.5 bg-slate-900/40 border border-slate-800 rounded-xl text-sm font-medium text-slate-400 hover:text-cyan-400 hover:border-cyan-500/40 transition-all flex items-center gap-2">
+                    View Previous Updates <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-24">
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-100">Academic Background</h2>
+                <div class="h-px bg-slate-800 flex-grow ml-6 max-w-xs"></div>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-12 text-slate-400 leading-relaxed text-lg">
+                
+                <div class="lg:col-span-3">
+                    <p class="mb-6 font-serif text-lg md:text-xl text-slate-300 leading-relaxed">
+                        My research sits at the intersection of cosmology and data science. I try to understand how profound astrophysical processes — such as the reionization of the intergalactic medium (IGM) during the first billion years, or energetic baryonic feedback during late times — affect cosmological structures and our ability to measure them.
+                    </p>
+                    <p class="mb-6 font-serif text-lg md:text-xl text-slate-300 leading-relaxed">
+                        My personal journey here has been equally dynamic. Growing up in a small Indian city, navigating the intense environment of the Indian Institute of Technology (IIT) Varanasi, and eventually making the move to establish my career in Europe meant adapting to entirely new academic systems and cultures. Having lived and researched across Sweden, Switzerland, and the Netherlands, I've developed a highly adaptable, cross-cultural approach to science.
+                    </p>
+                    <p class="mb-6 font-serif text-lg md:text-xl text-slate-300 leading-relaxed">
+                        Today, I bring that global perspective to my role as an Independent Researcher (PI) at Stockholm University, leading a research program funded by the Olle Engkvists Stiftelse. My past appointments include a Nordita Fellowship and postdoctoral positions at the University of Zurich and the University of Groningen, and my work was recognized with the URSI Young Scientist Award in 2023.
+                    </p>
+                </div>
+                
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-slate-900/40 border border-slate-800/60 backdrop-blur-sm rounded-xl p-6 hover:bg-slate-900/60 transition-colors">
+                        <h3 class="text-slate-200 font-medium mb-4 text-lg">Education</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-slate-200 font-medium text-sm">PhD in Astronomy</p>
+                                <p class="text-xs text-slate-500 mt-1">Stockholm University · 2015–2019</p>
+                            </div>
+                            <div class="h-px w-full bg-slate-800/60"></div>
+                            <div>
+                                <p class="text-slate-200 font-medium text-sm">Integrated M.Tech, Engineering Physics</p>
+                                <p class="text-xs text-slate-500 mt-1">IIT (BHU) Varanasi · 2010–2015 · <span class="text-amber-400">Gold Medallist</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flammarion Engraving Feature -->
+            <div class="mt-16 bg-slate-900/30 border border-slate-800/60 rounded-2xl overflow-hidden flex flex-col md:flex-row items-stretch group shadow-2xl">
+                <div class="md:w-1/2 relative min-h-[250px] overflow-hidden border-b md:border-b-0 md:border-r border-slate-800/60">
+                    <div class="absolute inset-0 bg-[#060913]/30 mix-blend-multiply z-10 group-hover:opacity-0 transition-opacity duration-700 pointer-events-none"></div>
+                    <img src="images/flammarion2019.jpg" alt="Modern Flammarion Engraving featuring the SKA" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" onerror="this.src='https://sambit-giri.github.io/images/flammarion.jpg'" />
+                </div>
+                <div class="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-slate-900/50 to-slate-950/80">
+                    <h3 class="text-2xl font-bold text-slate-100 mb-4">The Quest for Cosmic Dawn</h3>
+                    <p class="font-serif text-lg md:text-xl text-slate-300 leading-relaxed mb-6">
+                        This is a modern rendition of the classic Flammarion engraving, created for the cover of my PhD thesis. It serves as an allegory for humanity's enduring curiosity about the cosmos, substituting the classical mechanisms of the heavens with the Square Kilometre Array (SKA) — our next-generation observational tool. Crucially, the seeker is depicted alongside a computer, symbolizing the indispensable role of advanced data science techniques in modern astrophysics. This artwork perfectly encapsulates my core research vision: bridging theoretical physics with data-driven discoveries to pierce the cosmic veil.
+                    </p>
+                    <div class="flex items-center gap-3">
+                        <a href="https://issuu.com/ska_telescope/docs/contact_-_issue_01" target="_blank" class="px-4 py-1.5 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-[11px] uppercase tracking-wider font-mono text-cyan-400 shadow-sm flex items-center gap-2 hover:bg-cyan-500/20 hover:text-cyan-300 transition-colors cursor-pointer">
+                            <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Featured in the 1st edition of SKAO Magazine 'Contact' <i data-lucide="external-link" class="w-3 h-3 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research / Visual Showcase Section -->
+        <section id="research" class="py-24">
+            <div class="flex items-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-100">The Core of My Research</h2>
+                <div class="h-px bg-slate-800 flex-grow ml-6 max-w-xs"></div>
+            </div>
+
+            <!-- Research Vision Block -->
+            <div class="mb-12 bg-slate-900/20 border border-slate-800/60 p-8 rounded-2xl">
+                <h3 class="text-xl font-bold text-slate-200 mb-4 flex items-center gap-3">
+                    <i data-lucide="zap" class="w-5 h-5 text-cyan-400"></i> Research Vision & Future Directions
+                </h3>
+                <p class="font-serif text-lg md:text-xl text-slate-300 leading-relaxed">
+                    Looking forward, my research program is transitioning from summary statistics to <strong class="font-sans text-slate-200">field-level inference</strong> across cosmic time. By developing unified, multi-wavelength frameworks, I aim to synergize 21-cm maps from the SKA with high-redshift galaxy surveys from Euclid and Roman. This ambitious strategy will break long-standing parameter degeneracies, enabling us to extract maximal cosmological information and uncover the fundamental physics driving both the Epoch of Reionization and late-time structure formation.
+                </p>
+            </div>
+
+            <!-- Interactive Tabs Layout -->
+            <div class="flex flex-col lg:flex-row gap-8 mb-32">
+                
+                <!-- Sidebar Tabs -->
+                <div id="pillar-tabs" class="lg:w-1/3 flex flex-row lg:flex-col gap-4 overflow-x-auto pb-4 lg:pb-0 hide-scrollbar">
+                    <!-- Populated by JS -->
+                </div>
+
+                <!-- Main Content Area -->
+                <div class="lg:w-2/3">
+                    <div class="bg-[#0a0f1a]/80 border border-slate-800/80 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-full min-h-[500px]">
+                        
+                        <!-- Image Section -->
+                        <div class="relative h-64 md:h-80 w-full bg-[#020617] border-b border-slate-800/80" id="pillar-media-container">
+                            <div class="absolute inset-0 opacity-20 bg-gradient-to-t from-[#0a0f1a] to-transparent z-10 pointer-events-none"></div>
+                            <img id="pillar-image" src="" alt="Research visualization" class="absolute inset-0 w-full h-full object-cover z-0" onerror="this.style.display='none'; document.getElementById('pillar-fallback').style.display='block';" />
+                            <div id="pillar-fallback" class="absolute inset-0 w-full h-full z-0 hidden"></div>
+                        </div>
+
+                        <!-- Text Section -->
+                        <div class="p-8 md:p-10 flex-grow flex flex-col justify-center bg-gradient-to-br from-slate-900/50 to-slate-950/50">
+                            <h3 id="pillar-title" class="text-2xl md:text-3xl font-bold text-slate-100 mb-4"></h3>
+                            <p id="pillar-desc" class="font-serif text-lg md:text-xl text-slate-300 leading-relaxed mb-8"></p>
+                            <ul id="pillar-bullets" class="space-y-4 text-slate-300 mb-8"></ul>
+
+                            <!-- Highlighted Publication -->
+                            <div id="pillar-featured" class="mt-auto p-5 rounded-xl border bg-slate-900/60 transition-colors">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools Grid -->
+            <div class="mb-10">
+                <div class="flex items-center mb-4">
+                    <h3 class="text-2xl font-bold text-slate-100">Featured Open-Source Tools</h3>
+                </div>
+                <p class="font-serif text-lg text-slate-300 leading-relaxed max-w-4xl mb-6">
+                    I am a strong advocate for open-source science. Making computational pipelines publicly available is an ethical commitment to transparency, reproducibility, and collaborative progress. It ensures that scientific claims can be independently verified and invites crucial feedback from the community. Below are a few of my featured projects. You can explore all my public repositories on my <a href="https://github.com/sambit-giri" target="_blank" class="text-cyan-400 hover:text-cyan-300 hover:underline transition-colors font-sans font-medium">GitHub profile <i data-lucide="external-link" class="inline-block w-3.5 h-3.5 mb-1 ml-0.5"></i></a>.
+                </p>
+            </div>
+            <div id="tools-grid" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6 mb-32">
+                <!-- Populated by JS -->
+            </div>
+
+            <!-- Collaborations Grid -->
+            <div class="flex items-center mb-10">
+                <h3 class="text-2xl font-bold text-slate-100">Major Collaborations & Consortia</h3>
+            </div>
+            <div id="collabs-grid" class="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Teaching & Outreach Section -->
+        <section id="teaching" class="py-24 border-t border-slate-800/50">
+            <div class="flex items-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-100">Teaching & Outreach</h2>
+                <div class="h-px bg-slate-800 flex-grow ml-6 max-w-xs"></div>
+            </div>
+            
+            <p class="font-serif text-lg md:text-xl text-slate-300 leading-relaxed max-w-4xl mb-10">
+                Beyond my core research, I am deeply committed to education and making complex astrophysical and mathematical concepts accessible. I develop interactive tools and software packages designed specifically to help students and the broader community engage with data science and abstract mathematics.
+            </p>
+
+            <div id="teaching-grid" class="grid md:grid-cols-2 gap-6">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- Bibliography & Talks Section -->
+        <section id="publications" class="py-24 border-t border-slate-800/50">
+            <div class="grid lg:grid-cols-2 gap-16">
+                
+                <!-- Complete Bibliography Column -->
+                <div>
+                    <div class="flex items-center mb-8">
+                        <h2 class="text-2xl font-bold text-slate-100">Complete Bibliography</h2>
+                        <div class="h-px bg-slate-800 flex-grow ml-6"></div>
+                    </div>
+
+                    <div class="bg-slate-900/20 border border-slate-800/50 rounded-xl overflow-hidden flex flex-col">
+                        <div class="flex border-b border-slate-800/50 bg-slate-900/40" id="pub-tabs-container">
+                            <button onclick="setPubTab('all')" id="tab-all" class="flex-1 py-3 px-2 text-[11px] uppercase tracking-wider font-mono transition-colors text-emerald-400 border-b-2 border-emerald-400 bg-slate-800/40">All</button>
+                            <button onclick="setPubTab('first')" id="tab-first" class="flex-1 py-3 px-2 text-[11px] uppercase tracking-wider font-mono transition-colors text-slate-500 hover:text-slate-300 hover:bg-slate-800/20">First Author</button>
+                            <button onclick="setPubTab('second-third')" id="tab-second-third" class="flex-1 py-3 px-2 text-[11px] uppercase tracking-wider font-mono transition-colors text-slate-500 hover:text-slate-300 hover:bg-slate-800/20">2nd & 3rd Author</button>
+                        </div>
+                        
+                        <!-- Scrollable list window -->
+                        <div id="pubs-list" class="p-5 space-y-5 bg-slate-900/10 h-[500px] overflow-y-auto custom-scrollbar">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                    <div class="pt-4 text-left pl-2">
+                        <a href="https://scholar.google.se/citations?user=Qqf3ThUAAAAJ&hl=en" target="_blank" class="inline-flex items-center gap-2 text-xs text-cyan-500 hover:text-cyan-400 font-medium">
+                            View citation metrics on Google Scholar <i data-lucide="external-link" class="w-3 h-3"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Invited Talks Column -->
+                <div>
+                    <div class="flex items-center mb-8">
+                        <h2 class="text-2xl font-bold text-slate-100">Invited Talks & Seminars</h2>
+                        <div class="h-px bg-slate-800 flex-grow ml-6"></div>
+                    </div>
+                    
+                    <div class="bg-slate-900/20 border border-slate-800/50 rounded-xl overflow-hidden h-[546px] flex flex-col">
+                        <div id="talks-list" class="p-5 space-y-4 bg-slate-900/10 overflow-y-auto custom-scrollbar h-full">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="border-t border-slate-800/50 bg-[#060913]/80 backdrop-blur-md py-16 text-center mt-12 relative z-10">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-2xl font-bold text-slate-200 mb-6">Get In Touch</h2>
+            <p class="text-slate-400 max-w-lg mx-auto mb-8">
+                Whether you are interested in discussing simulation-based inference, machine learning in cosmology, or potential collaborations, my inbox is always open.
+            </p>
+            
+            <div class="inline-flex items-center justify-center gap-2 mb-10 px-6 py-4 bg-slate-900/50 border border-slate-800/80 rounded-2xl text-slate-300 shadow-xl">
+                <i data-lucide="map-pin" class="w-5 h-5 text-cyan-500"></i>
+                <div class="text-left text-sm ml-2">
+                    <p class="font-medium text-slate-200">Department of Astronomy</p>
+                    <p class="text-slate-400">Stockholm University</p>
+                    <p class="text-slate-400">SE-106 91 Stockholm, Sweden</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <a href="mailto:sambit.giri@astro.su.se" class="p-4 bg-slate-900 border border-slate-800 rounded-full hover:bg-slate-800 hover:text-cyan-400 hover:border-cyan-500/30 transition-all text-slate-400 shadow-lg" title="Academic Email">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+                <a href="https://scholar.google.se/citations?user=Qqf3ThUAAAAJ&hl=en" target="_blank" class="p-4 bg-slate-900 border border-slate-800 rounded-full hover:bg-slate-800 hover:text-cyan-400 hover:border-cyan-500/30 transition-all text-slate-400 shadow-lg" title="Google Scholar">
+                    <i data-lucide="trending-up" class="w-5 h-5"></i>
+                </a>
+                <a href="https://github.com/sambit-giri" target="_blank" class="p-4 bg-slate-900 border border-slate-800 rounded-full hover:bg-slate-800 hover:text-cyan-400 hover:border-cyan-500/30 transition-all text-slate-400 shadow-lg" title="GitHub">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="https://orcid.org/0000-0002-2560-536X" target="_blank" class="p-4 bg-slate-900 border border-slate-800 rounded-full hover:bg-slate-800 hover:text-cyan-400 hover:border-cyan-500/30 transition-all text-slate-400 shadow-lg" title="ORCID">
+                    <svg viewBox="0 0 24 24" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z" /></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/sambit-giri" target="_blank" class="p-4 bg-slate-900 border border-slate-800 rounded-full hover:bg-slate-800 hover:text-cyan-400 hover:border-cyan-500/30 transition-all text-slate-400 shadow-lg" title="LinkedIn">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+            </div>
+            <p class="text-slate-600 font-mono text-sm">
+                © <span id="current-year"></span> Sambit Giri.
+            </p>
+        </div>
+    </footer>
+
+    <!-- All Javascript Logic -->
+    <script>
+        // --- 1. DATA DEFINITIONS ---
+
+        const fallbackSVGs = {
+            reionization: `<svg width="100%" height="100%" viewBox="0 0 400 250" class="w-full h-full object-cover bg-[#020617]" xmlns="http://www.w3.org/2000/svg"><defs><filter id="blur"><feGaussianBlur stdDeviation="15" /></filter><filter id="blur-sm"><feGaussianBlur stdDeviation="5" /></filter></defs><rect width="400" height="250" fill="#020617" /><circle cx="100" cy="100" r="60" fill="#0891b2" filter="url(#blur)" opacity="0.6"/><circle cx="280" cy="150" r="80" fill="#3730a3" filter="url(#blur)" opacity="0.5"/><circle cx="200" cy="80" r="40" fill="#0284c7" filter="url(#blur)" opacity="0.7"/><circle cx="80" cy="200" r="50" fill="#4338ca" filter="url(#blur)" opacity="0.6"/><circle cx="350" cy="60" r="55" fill="#0e7490" filter="url(#blur)" opacity="0.5"/><circle cx="100" cy="100" r="20" fill="#22d3ee" filter="url(#blur-sm)" opacity="0.8"/><circle cx="280" cy="150" r="30" fill="#818cf8" filter="url(#blur-sm)" opacity="0.7"/><text x="20" y="30" fill="#64748b" font-family="monospace" font-size="12">z = 7.0 (Simulated HII Regions)</text></svg>`,
+            powerSpectrum: `<svg width="100%" height="100%" viewBox="0 0 400 250" class="w-full h-full object-cover bg-[#020617]" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="250" fill="#020617" /><path d="M50 200 L380 200 M50 200 L50 20" stroke="#1e293b" stroke-width="2" /><path d="M50 150 L380 150 M50 100 L380 100 M50 50 L380 50" stroke="#0f172a" stroke-width="1" /><path d="M50 180 Q 150 160, 200 100 T 350 30" fill="none" stroke="#22d3ee" stroke-width="3" /><path d="M50 180 Q 150 170, 200 130 T 350 110" fill="none" stroke="#818cf8" stroke-width="3" stroke-dasharray="5,5" /><circle cx="100" cy="165" r="4" fill="#e2e8f0" /><path d="M100 155 L100 175" stroke="#e2e8f0" stroke-width="2" /><circle cx="150" cy="140" r="4" fill="#e2e8f0" /><path d="M150 120 L150 160" stroke="#e2e8f0" stroke-width="2" /><circle cx="200" cy="100" r="4" fill="#e2e8f0" /><path d="M200 80 L200 120" stroke="#e2e8f0" stroke-width="2" /><circle cx="250" cy="65" r="4" fill="#e2e8f0" /><path d="M250 50 L250 80" stroke="#e2e8f0" stroke-width="2" /><text x="60" y="40" fill="#22d3ee" font-family="monospace" font-size="12">━━━ Cold Dark Matter</text><text x="60" y="60" fill="#818cf8" font-family="monospace" font-size="12">╍╍╍ Warm Dark Matter</text><text x="340" y="220" fill="#64748b" font-family="monospace" font-size="12">k [h/Mpc]</text><text x="20" y="120" fill="#64748b" font-family="monospace" font-size="12" transform="rotate(-90 20 120)">P(k)</text></svg>`,
+            inference: `<svg width="100%" height="100%" viewBox="0 0 400 250" class="w-full h-full object-cover bg-[#020617]" xmlns="http://www.w3.org/2000/svg"><rect width="400" height="250" fill="#020617" /><circle cx="80" cy="80" r="6" fill="#22d3ee" /><circle cx="80" cy="125" r="6" fill="#22d3ee" /><circle cx="80" cy="170" r="6" fill="#22d3ee" /><circle cx="160" cy="60" r="6" fill="#818cf8" /><circle cx="160" cy="105" r="6" fill="#818cf8" /><circle cx="160" cy="150" r="6" fill="#818cf8" /><circle cx="160" cy="195" r="6" fill="#818cf8" /><circle cx="240" cy="105" r="6" fill="#10b981" /><circle cx="240" cy="150" r="6" fill="#10b981" /><circle cx="320" cy="80" r="6" fill="#22d3ee" /><circle cx="320" cy="125" r="6" fill="#22d3ee" /><circle cx="320" cy="170" r="6" fill="#22d3ee" /><path d="M80 80 L160 60 M80 80 L160 105 M80 80 L160 150 M80 80 L160 195" stroke="#334155" stroke-width="1.5" opacity="0.6" /><path d="M80 125 L160 60 M80 125 L160 105 M80 125 L160 150 M80 125 L160 195" stroke="#334155" stroke-width="1.5" opacity="0.6" /><path d="M80 170 L160 60 M80 170 L160 105 M80 170 L160 150 M80 170 L160 195" stroke="#334155" stroke-width="1.5" opacity="0.6" /><path d="M160 60 L240 105 M160 60 L240 150 M160 105 L240 105 M160 105 L240 150 M160 150 L240 105 M160 150 L240 150 M160 195 L240 105 M160 195 L240 150" stroke="#334155" stroke-width="1.5" opacity="0.6" /><path d="M240 105 L320 80 M240 105 L320 125 M240 105 L320 170 M240 150 L320 80 M240 150 L320 125 M240 150 L320 170" stroke="#334155" stroke-width="1.5" opacity="0.6" /><text x="65" y="220" fill="#64748b" font-family="monospace" font-size="10">Inputs</text><text x="210" y="220" fill="#64748b" font-family="monospace" font-size="10">Latent Space</text><text x="295" y="220" fill="#64748b" font-family="monospace" font-size="10">Posteriors</text></svg>`
+        };
+
+        const recentNews = [
+            { date: "Mar 2026", type: "Upcoming", text: "Attending the <a href='https://indico.skatelescope.org/event/1273/' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Cosmology in the Alps 2026</a> meeting.", color: "text-pink-400", bg: "bg-pink-400/10" },
+            { date: "Feb 2026", type: "Event", text: "Organising committee member for the <a href='https://indico.chalmers.se/event/371/overview' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>3rd National Sweden SKA Science Days</a>.", color: "text-amber-400", bg: "bg-amber-400/10" },
+            { date: "Jan 2026", type: "Paper", text: "Submitted to OJAp: <a href='https://arxiv.org/abs/2601.18784' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Baryonification III: An accurate analytical model for the DM PDF of FRBs</a>.", color: "text-cyan-400", bg: "bg-cyan-400/10" },
+            { date: "Dec 2025", type: "Paper", text: "Published in JCAP: <a href='https://arxiv.org/abs/2507.07892' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Baryonification: an alternative to hydrodynamical simulations for cosmological studies</a>.", color: "text-cyan-400", bg: "bg-cyan-400/10" },
+            { date: "Dec 2025", type: "Paper", text: "Published in MNRAS: <a href='https://arxiv.org/abs/2505.06350' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Mapping neutral islands during end stages of reionization</a>.", color: "text-cyan-400", bg: "bg-cyan-400/10" },
+            { date: "Nov 2025", type: "Paper", text: "Submitted to MNRAS: <a href='https://arxiv.org/abs/2511.11568' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Implicit inference of the reionization history with higher-order statistics</a>.", color: "text-cyan-400", bg: "bg-cyan-400/10" },
+            { date: "Nov 2025", type: "Paper", text: "Published in JCAP: <a href='https://arxiv.org/abs/2507.07991' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Baryonification II: constraining feedback</a>.", color: "text-cyan-400", bg: "bg-cyan-400/10" },
+            { date: "Sep 2025", type: "Position", text: "Started as Senior Researcher (PI) at Stockholm University, funded by Olle Engkvists Stiftelse.", color: "text-emerald-400", bg: "bg-emerald-400/10" }
+        ];
+
+        const researchPillars = [
+            {
+                id: "structures", label: "01 // COSMIC STRUCTURES", title: "Astrophysical Processes & Cosmic Structures", icon: "globe",
+                theme: { text: "text-cyan-400", border: "border-cyan-500/50", shadow: "shadow-cyan-900/20", bg: "bg-cyan-500/10" },
+                desc: "I study how complex astrophysics shapes the universe across cosmic time. From simulating the growth of ionized bubbles during the Epoch of Reionization (EoR) to modeling how energetic baryonic feedback redistributes matter and suppresses the power spectrum at late times.",
+                bullets: [ "Modeling the 21-cm signal to interpret SKA and LOFAR observations.", "Displacing particles in N-body simulations to account for baryonic feedback in weak lensing." ],
+                imagePath: "images/slices_Giri2019.png", fallback: "reionization",
+                featuredPaper: { title: "Mapping neutral islands during end stages of reionization with photometric IGM tomography", authors: "Giri, S. K., Kakichii, K., Bianco, M., Meerburg, P. D. (2025) • MNRAS" }
+            },
+            {
+                id: "inference", label: "02 // BAYESIAN INFERENCE", title: "Data-Driven Cosmology & Inference", icon: "database",
+                theme: { text: "text-indigo-400", border: "border-indigo-500/50", shadow: "shadow-indigo-900/20", bg: "bg-indigo-500/10" },
+                desc: "Direct likelihood-based inference with high-fidelity simulations is computationally impractical. I develop scalable Simulation-Based Inference (SBI) pipelines and machine learning emulators to extract fundamental physics from noisy data.",
+                bullets: [ "Training neural density estimators to learn complex, conditional posteriors.", "Utilizing topological metrics (like Betti numbers) to move beyond two-point statistics and break parameter degeneracies." ],
+                imagePath: "images/betti_Giri2021.png", fallback: "powerSpectrum",
+                featuredPaper: { title: "Implicit inference of the reionization history with higher-order statistics of the 21-cm signal", authors: "Cerardi, N., Giri, S. K., Bianco, M., Piras, D., et al. (2025) • MNRAS" }
+            },
+            {
+                id: "software", label: "03 // SOFTWARE DEVELOPMENT", title: "Open-Source Computational Tools", icon: "code",
+                theme: { text: "text-emerald-400", border: "border-emerald-500/50", shadow: "shadow-emerald-900/20", bg: "bg-emerald-500/10" },
+                desc: "Bridging the gap between theoretical models and precision observations requires fast, robust software. I build community-standard emulators and simulation frameworks, integrating differentiable forward modeling into modern cosmological pipelines.",
+                bullets: [ "BCemu: Emulator for matter power spectrum suppression.", "Tools21cm: Comprehensive Python pipeline for 21-cm signal analysis." ],
+                imagePath: "images/HM21cm_Schneider2021.png", fallback: "inference",
+                featuredPaper: { title: "Tools21cm: A python package to analyse the large-scale 21-cm signal from the EoR and Cosmic Dawn", authors: "Giri, S. K., Mellema, G., Jensen, H. (2020) • JOSS" }
+            }
+        ];
+
+        const tools = [
+            { title: "BEoRN", desc: "Bubbles during the Epoch of Reionization Numerical Simulator (BEoRN) is a fast, flexible radiative-transfer framework that reproduces realistic reionization morphology suitable for statistical interpretation of measurement of EoR and cosmic dawn, such as the 21-cm signal.", tags: ["Simulations", "Python", "SBI", "Cosmic Dawn"], icon: "globe", color: "text-indigo-400", link: "https://github.com/sambit-giri/BEORN" },
+            { title: "pyC2Ray", desc: "A highly accurate 3D ray-tracing radiative transfer code. While tools like BEoRN optimize for speed using 1D spherical symmetry, pyC2Ray performs full 3D radiative transfer. It leverages GPU acceleration to achieve speedups of several orders of magnitude compared to traditional CPU implementations.", tags: ["3D Radiative Transfer", "GPU", "C2Ray", "Cosmic Dawn"], icon: "cpu", color: "text-rose-400", link: "https://github.com/cosmic-reionization/pyC2Ray" },
+            { title: "Tools21cm", desc: "A comprehensive Python package for 21-cm data analysis and observational pipelines. It enables end-to-end workflows: adding instrumental effects (noise, antenna gain errors) and foregrounds, followed by robust signal extraction. It features advanced summary statistics, including power spectra, image-based structure identification (ionized bubbles), and topological metrics like bubble size distributions, Betti numbers, and Euler characteristics. Widely adopted by the global 21-cm community and SKAO scientists.", tags: ["Python", "21cm", "Topology", "Open Source"], icon: "telescope", color: "text-cyan-400", link: "https://github.com/sambit-giri/tools21cm" },
+            { title: "BCemu", desc: "A machine-learning emulator predicting matter power spectrum suppression caused by baryonic feedback. Energetic processes from galaxies, such as active galactic nuclei (AGN) jets and supernovae, redistribute gas on massive scales—a crucial effect that can severely bias weak-lensing measurements if not accurately modeled. BCemu provides fast, robust predictions for these effects and is being extended into JAX-based differentiable frameworks for next-generation surveys.", tags: ["Machine Learning", "JAX", "Weak Lensing", "N-body"], icon: "database", color: "text-emerald-400", link: "https://github.com/sambit-giri/BCemu" }
+        ];
+
+        const teachingProjects = [
+            { title: "Mímir's Well", desc: "An educational platform featuring interactive online visualizations designed to teach students abstract mathematical concepts and data analysis methods. It includes hands-on simulations for topics ranging from the Monty Hall paradox to MCMC sampling algorithms.", tags: ["Interactive", "Web", "Statistics", "Education"], icon: "pie-chart", color: "text-amber-400", link: "https://sambit-giri.github.io/mimirs-well" },
+            { title: "AstronomyCalc", desc: "A Python toolkit designed for teaching astronomical calculations and data analysis methods, highlighting a commitment to innovative teaching practices and reproducible education.", tags: ["Python", "Education", "Data Analysis", "JOSE"], icon: "graduation-cap", color: "text-pink-400", link: "https://github.com/sambit-giri/AstronomyCalc" }
+        ];
+
+        const collaborations = [
+            { name: "SKA", full: "Square Kilometre Array", role: "Key Member — EoR Science Working Group", desc: "My work focuses on producing high-fidelity cosmological simulations of the Epoch of Reionization and developing advanced data analysis methods. By building robust statistical frameworks, I aim to connect the complex, contaminated radio data expected from the SKA directly to theoretical models.", color: "text-indigo-400", border: "border-indigo-500/30", bg: "bg-indigo-500/10", href: "https://www.skao.int/" },
+            { name: "LOFAR", full: "Low Frequency Array", role: "Core Member — EoR Key Science Project", desc: "As a precursor to the SKA, LOFAR provides the current best data to test our theoretical models and Bayesian inference frameworks. By analyzing LOFAR's observations today, I am actively refining and scaling these methods using machine learning to handle the massive, highly informative datasets the SKA will soon produce.", color: "text-emerald-400", border: "border-emerald-500/30", bg: "bg-emerald-500/10", href: "https://www.lofar.eu/" },
+            { name: "Euclid", full: "ESA Euclid Space Mission", role: "Member — Cosmological Simulations Working Group", desc: "I am actively involved in understanding baryonic feedback effects, which are highly degenerate with the imprints of dark matter models on the weak lensing signal. To address this, we developed a fast baryonification framework, for which I created BCemu—a JAX-based neural emulator designed to rapidly model these feedback impacts on the matter power spectrum.", color: "text-amber-400", border: "border-amber-500/30", bg: "bg-amber-500/10", href: "https://www.euclid-ec.org/" },
+            { name: "Roman", full: "Nancy Grace Roman Space Telescope", role: "Member — Cosmic Dawn Group", desc: "I develop theoretical models and observation strategies to probe reionization physics and test dark matter models with Roman deep-field surveys at high redshift. Crucially, I am exploring how cross-correlation and synergy studies between Roman and the SKA will provide a much more comprehensive understanding of the cosmic dawn.", color: "text-pink-400", border: "border-pink-500/30", bg: "bg-pink-500/10", href: "https://roman.gsfc.nasa.gov/" },
+            { name: "SEarCH", full: "Simulation-based Exploration and Inference for Cosmic Reionization Histories", role: "Founder & Lead", desc: "A cross-disciplinary collaboration linking astrophysicists and data scientists across Europe. We aim to develop improved Simulation-Based Inference (SBI) methods for cosmological data analysis, specifically designed to handle the massive datasets that will be produced by the SKAO.", color: "text-cyan-400", border: "border-cyan-500/30", bg: "bg-cyan-500/10", href: "#" }
+        ];
+
+        const invitedTalks = [
+            { title: "Robust Exploration of Patchy Reionization", venue: "Cosmology Seminar, ETH Zurich, Switzerland", date: "Apr 2025" },
+            { title: "Towards resolving the S8 tension", venue: "Dutch Theoretical Cosmology Meeting, Groningen", date: "Oct 2024" },
+            { title: "Exploring the epoch of reionization with SKA", venue: "2nd National Sweden SKA Science Day, Gothenburg", date: "Sep 2024" },
+            { title: "Probing Cosmological Models through the First Galaxies", venue: "IIT Madras, India", date: "Jul 2024" },
+            { title: "On the use of machine learning for cosmic reionization", venue: "Kapteyn Astronomical Institute, University of Groningen", date: "May 2023" },
+            { title: "Can baryonic feedback resolve the S8 tension?", venue: "Nordita Astrophysics Seminar, Stockholm", date: "Jan 2023" },
+            { title: "Knowing cosmic reionization with images", venue: "Laboratory of Astrophysics, EPFL, Lausanne", date: "May 2022" },
+            { title: "Interpreting high-redshift 21-cm signal observations", venue: "Tata Institute of Fundamental Research, Mumbai", date: "Jan 2022" },
+        ];
+
+        const fullPublicationList = [
+            "Cerardi, N., Giri, S. K., Bianco, M., Piras, D., et al., 2025. Implicit inference of the reionization history with higher-order statistics of the 21-cm signal. Submitted to MNRAS.",
+            "Kovač, M., Nicola, A., Bucko, J., Schneider, A., Reischke, R., Giri, S. K., Teyssier, R., Schaller, M., Schaye, J., 2025. Baryonification II: Constraining feedback with X-ray and kinematic Sunyaev-Zel'dovich observations. Accepted in JCAP.",
+            "Schneider, A., Kovač, M., Bucko, J., Nicola, A., Reischke, R., Giri, S. K., Teyssier, R., Tröster, T., Refregier, A., Schaller, M., Schaye, J., 2025. Baryonification: An alternative to hydrodynamical simulations for cosmological studies. Submitted to JCAP.",
+            "Giri, S. K., Kakichii, K., Bianco, M. and Meerburg, P. D., 2025. Mapping neutral islands during end stages of reionization with photometric intergalactic medium tomography. Accepted in MNRAS.",
+            "Schwandt, T. P., Georgiev, I., Giri, S. K., Mellema, G. and Iliev, I. T., 2025. Impact of anisotropic photon emission from sources during the epoch of reionisation. Submitted to MNRAS.",
+            "Ceccotti, E., Offringa, A. R., Mertens, F. G., Koopmans, L. V. E., Munshi, S., Chege, J. K., Acharya, A., Brackenhoff, S. A., Chapman, E., Ciardi, B., Ghara, R., Ghosh, S., Giri, S. K., Höfer, C., Hothi, I., Mellema, G., Mevius, M., Pandey, V. N., Zaroubi, S., 2025. First upper limits on the 21-cm signal power spectrum of neutral hydrogen at z=9.16 from the LOFAR 3C196 field. MNRAS, 544(1), 1255-1283.",
+            "Bonaldi, A., Hartley, P., Braun, R., Purser, S., Acharya, A., Ahn, K., Aparicio Resco, M., Bait, O., Bianco, M., Chakraborty, A., Chapman, E., Chatterjee, S., Chege, K., Chen, H., Chen, X., Chen, Z., Conaboy, L., Cruz, M., Darriba, L., De Santis, M., Denzel, P., Diao, K., Feron, J., Finlay, C., Gehlot, G., Ghosh, S., Giri, S. K., ..., 2025. Square Kilometre Array Science Data Challenge 3a: foreground removal for an EoR experiment. MNRAS, 543(2), 1092-1119.",
+            "Giri, S. K., 2025. Astronomy Calc: A python toolkit for teaching Astronomical Calculations and Data Analysis methods. JOSE, 8(87), 261.",
+            "Ghara, R., Zaroubi, S., Ciardi, B., Mellema, G., Giri, S. K., Mertens, F. G., Mevius, M., Koopmans, L. V. E., Iliev, I. T., Acharya, A., Brackenhoff, S. A., Ceccotti, E., Georgiev, I., Ghosh, S., Hothi, I., Höfer, C., Ma, Q., Munshi, S., Offringa, A. R., Shaw, A. K., Yatawatta, S., 2025. Constraints on the state of the IGM at z~8-10 using redshifted 21-cm observations with LOFAR. A&A, 699, A109.",
+            "Mertens, F. G., Mevius, M., Koopmans, L. V. E., Offringa, A. R., Zaroubi, S., Acharya, A., Brackenhoff, S.A., Ceccotti, E., Chapman, E., Chege, K., Ciardi, B., Ghara, R., Ghosh, S., Giri, S. K., Hothi, I., Höfer, C., Iliev, I. T., Jelić, V., Ma, Q., Mellema, G., Munshi, S., Pandey, V. N., Yatawatta, S., 2025. Deeper multi-redshift upper limits on the Epoch of Reionization 21-cm signal power spectrum from LOFAR between z=8.3 and z=10.1 A&A, 698, A186.",
+            "Georgiev, I., Mellema, G., and Giri, S. K., 2025. The forest at EndEoR: The effect of Lyman Limit Systems on the End of Reionisation. MNRAS, 536(4), 3689-3706.",
+            "Nebrin, O., Smith, A., Lorinc, K., Hörnquist, J., Larson, A., Mellema, G., Giri, S. K., 2025. Lyman-a feedback prevails at Cosmic Dawn: Implications for the first galaxies, stars, and star clusters. MNRAS, 537(2), 1646-1687.",
+            "Gao, L.-Y., Koopmans, L. V. E., Mertens, F. G., Munshi, S., Li, Y., Brackenhoff, S. A., Ceccotti, E., Chege, J. K., Acharya, A., Ghara, R., Giri, S. K., Iliev, I. T., Mellema, G., Zhang, X., 2025. Extracting the Epoch of Reionization Signal with 3D U-Net Neural Networks Using a Data-driven Systematic Effect Model. ApJ, 988(1), 84.",
+            "Acharya, A., Ma, Q., Giri, S. K., Ciardi, B., Ghara, R., Mellema, G., Zaroubi, S., Hothi, I., Iliev, I. T., Koopmans, L. V. E., Bianco, M., 2025. Exploring the effect of different cosmologies on the Epoch of Reionization 21-cm signal with POLAR. MNRAS, 543(2), 1058-1078.",
+            "Bianco, M., Giri, S. K., Sharma, R., Chen, T., Krishna, S. P., Finlay, C., Nistane, V., Denzel, P., Santis, M. D., Ghorbel, H., 2025. Deep learning approach for identification of HII regions during reionization in 21-cm observations III. image recovery. MNRAS, 541(1), 234-250.",
+            "Choudhury, M., Ghara, R., Zaroubi, S., Ciardi, B., Koopmans, L. V. E., Mellema, G., Shaw, A. K., Acharya, A., Iliev, I. T., Ma, Q.-B., Giri, S. K., 2025. Inferring IGM parameters from the redshifted 21-cm Power Spectrum using Artificial Neural Networks. JCAP, 2025(06), 32.",
+            "Euclid Collaboration, Lesgourgues, J., Schwagereit, J., Bucko, J., Parimbelli, G., Giri, S. K., 2025. Euclid preparation. LVI. Sensitivity to non-standard particle dark matter model. A&A, 693, A249.",
+            "Euclid Collaboration, ... Giri, S. K., 2025. Euclid. I. Overview of the Euclid mission. A&A, 697, A1.",
+            "Schaeffer, T., Giri, S. K., and Schneider, A., 2024. Testing common approximations to predict the 21cm signal at the Epoch of Reionization and Cosmic Dawn. PRD, 110, 023543.",
+            "Giri, S. K., Bianco, M., Schaeffer, T., Iliev, I. T., Mellema, G., and Schneider, A., 2024. The 21-cm signal during the end stages of reionization. MNRAS, 533(2), 2364-2378.",
+            "Dayal, P. and Giri, S. K., 2024. Warm dark matter constraints from the JWST. MNRAS, 528(2), 2784-2789.",
+            "Ghara, R., Shaw, A. K., Zaroubi, S., Ciardi, B., Mellema, G., Koopmans, L. V. E., Acharya, A., Choudhury, M., Giri, S. K., Iliev, I. T., Ma, Q. and Mertens, F. G., 2024. Probing the intergalactic medium during the Epoch of Reionization using 21-cm signal power spectra. A&A, 687, A252.",
+            "He, Y., Giri, S. K., Sharma, R., Mtchedlidze, S., and Georgiev, I., 2024. Inverse Gertsenshtein effect as a probe of high-frequency gravitational waves. JCAP, 2024(05), 051.",
+            "Hirling, P., Bianco, M., Giri, S. K., Iliev, I. T., Mellema, G., and Kneib, J. P., 2024. pyC2Ray: A flexible and GPU-accelerated Radiative Transfer Framework for Simulating the Cosmic Epoch of Reionization. A&C, 48, 100861.",
+            "Peters, F. H., Schneider, A., Bucko, J., Giri, S. K., and Parimbelli, G., 2024. Constraining Hot Dark Matter Sub-Species with Weak Lensing and the Cosmic Microwave Background Radiation. A&A, 687, A161.",
+            "Bucko, J., Giri, S. K., Peters, F. H. and Schneider, A., 2023. Probing the two-body decaying dark matter scenario with weak lensing and the cosmic microwave background. A&A, 683, A152.",
+            "Schaeffer, T., Giri, S. K. and Schneider, A., 2023. BEORN: a fast and flexible framework to simulate the epoch of reionization and the cosmic dawn. MNRAS, 526(2), 2942-2959.",
+            "Acharya, A., Mertens, F., Ciardi, B., Ghara, R., Koopmans, L.V.E., Giri, S. K., Hothi, I., Ma, Q.-B., Mellema, G. and Munshi, S., 2023. 21-cm Signal from the Epoch of Reionization: A Machine Learning upgrade to Foreground Removal with Gaussian Process Regression. MNRAS, 527(3), 7835-7846.",
+            "Bianco, M., Giri, S. K., Prelogović, D., Chen, T., Mertens, F. G., Tolley, E., Mesinger, A., and Kneib, J.-P., 2024. Deep learning approach for identification of HII regions during reionization in 21-cm observations II. foreground contamination. MNRAS, 528(3), 5212-5230.",
+            "Nebrin, O., Giri, S. K. and Mellema, G., 2023. Starbursts in low-mass haloes at Cosmic Dawn. I. The critical halo mass for star formation. MNRAS, 524(2), 2290-2311.",
+            "Schneider, A., Schaeffer, T. and Giri, S. K., 2023. Cosmological forecast of the 21-cm power spectrum using the halo model of reionization. PRD, 108, 043030.",
+            "Bucko, J., Giri, S. K. and Schneider, A., 2023. Constraining dark matter decays with cosmic microwave background and weak lensing shear observations. A&A, 672, A157.",
+            "Giri, S. K., Schneider, A., Maion, F. and Angulo, R. E., 2023. Suppressing variance in 21-cm signal simulations during reionization. A&A, 669, A6.",
+            "Gan, H., Mertens, F. G., Koopmans, L. V. E., Offringa, A. R., Mevius, M., Pandey, V. N., Brackenhoff, S. A., Ceccotti, E., Ciardi, B., Gehlot, B. K., Ghara, R., Giri, S. K., Iliev, I. T., and Munshi, S., 2023. Assessing the impact of two independent direction-dependent calibration algorithms on the LOFAR 21-cm signal power spectrum. A&A, 669, A20.",
+            "Gan, H., Koopmans, L. V. E., Mertens, F. G., Mevius, M., Offringa, A. R., Ciardi, B., Gehlot, B. K., Ghara, R., Ghosh, A., Giri, S. K., Iliev, I. T., Mellema, G., Pandey, V. N., Zaroubi, S., 2022. Statistical analysis of the causes of excess variance in the 21 cm signal power spectra obtained with the Low-Frequency Array. A&A, 663, A9.",
+            "Gehlot, B. K., Koopmans, L. V. E., Offringa, A. R., Gan, H., Ghara, R., Giri, S. K., Kuiack, M., Mertens, F. G., Mevius, M., Mondal, R., Pandey, V. N., Shulevski, A., Wijers, R. A. M. J. and Yatawatta, S., 2022. Degree-Scale Galactic Radio Emission at 122 MHz around the North Celestial Pole with LOFAR-AARTFAAC. A&A, 662, A97.",
+            "Mevius, M., Mertens, F., Koopmans, L. V. E., Offringa, A. R., Yatawatta, S., Brentjens, M. A., Chapman, E., Ciardi, B., Gan, H., Gehlot, B. K., Ghara, R., Ghosh, A., Giri, S. K., Iliev, I. T., Mellema, G., Pandey, V. N., Zaroubi, S., 2022. A numerical study of 21-cm signal suppression and noise increase in direction-dependent calibration. MNRAS, 509(3), 3693-3702.",
+            "Giri, S. K. and Schneider, A., 2022. Imprints of fermionic and bosonic mixed dark matter on the 21-cm signal at cosmic dawn. PRD, 105, 083011.",
+            "Georgiev, I., Mellema, G., Giri, S. K. and Mondal, R., 2022. The large-scale 21-cm power spectrum from reionization. MNRAS, 513(4), 5109-5124.",
+            "Schneider, A., Giri, S. K., Stefania, A. and Refregier, A., 2022. Constraining baryonic feedback and cosmology with weak-lensing, X-ray, and kinematic Sunyaev-Zeldovich observations. MNRAS, 514(3), 3802-3814.",
+            "Hothi, I., Chapman, E., Pritchard, J. R., Mertens, F. G., Koopmans, L. V. E., Ciardi, B., Gehlot, B. K., Ghara, R., Ghosh, A., Giri, S. K., Iliev, I. T., Jelić, V., Zaroubi, S., 2021. Comparing Foreground Removal Techniques for Recovery of the LOFAR-EOR 21cm Power Spectrum. MNRAS, 500(2), 2264-2277.",
+            "Hubert, J., Schneider, A., Potter, D., Stadel, J., and Giri, S.K., 2021. Decaying dark matter: simulations and weak-lensing forecast. JCAP, 2021(10), 040.",
+            "Giri, S. K. and Schneider, A., 2021. Emulation of baryonic effects on the matter power spectrum and constraints from galaxy cluster data. JCAP, 2021(03), 046.",
+            "Parimbelli, G., Scelfo, G., Giri, S. K., Schneider, A., Archidiacono, M., Camera, S. and Viel, M., 2021. Mixed dark matter: matter power spectrum and halo mass function. JCAP, 2021(12), 044.",
+            "Ghara, R., Giri, S. K., Ciardi, B., Mellema, G. and Zaroubi, S., 2021. Constraining the state of the intergalactic medium during the Epoch of Reionization using MWA 21-cm signal observations. MNRAS, 503(3), 4551-4562.",
+            "Bianco, M., Iliev, I.T., Ahn, K., Giri, S. K., Mao, Y., Park, H. and Shapiro, P.R., 2021. The impact of inhomogeneous subgrid clumping on cosmic reionization II: modelling stochasticity. MNRAS, 504(2), 2443-2460.",
+            "Bianco, M., Giri, S. K., Iliev, I.T. and Mellema, G., 2021. Deep learning approach for identification of HII regions during reionization in 21-cm observations. MNRAS, 505(3), 3982-3997.",
+            "Giri, S. K. and Mellema, G., 2021. Measuring the topology of reionization with Betti numbers. MNRAS, 505(2), 1863-1877.",
+            "Schneider, A., Giri, S. K. and Mirocha, J., 2021. A halo model approach for the 21-cm power spectrum at cosmic dawn. PRD, 103(8), 083025.",
+            "Ross, H. E., Giri, S. K., Mellema, G., Dixon, K. L., Ghara, R. and Iliev, I. T., 2021. Redshift-space distortions in simulations of the 21-cm signal from the cosmic dawn. MNRAS, 506(3), 3717-3733.",
+            "Greig, B., Mesinger, A., Koopmans, L. V. E., Ciardi, B., Mellema, G., Zaroubi, S., Giri, S. K., Ghara, R., Ghosh, A., Iliev, I. T., Mertens, F. G., Mondal, R., Offringa, A. R. and Pandey, V. N., 2021. Interpreting LOFAR 21-cm signal upper limits at z ~ 9.1 in the context of high-z galaxy and reionisation observations. MNRAS, 501(1), 1-13.",
+            "Mondal, R., Fialkov, A., Fling, C., Iliev, I. T., Barkana, R., Ciardi, B., Mellema, G., Zaroubi, S., Koopmans, L. V. E., Mertens, F. G., Gehlot, B. K., Ghara, R., Ghosh, A., Giri, S. K., Offringa, A., Pandey, V. N., 2020. Tight Constraints on the Excess Radio Background at z=9.1 from LOFAR. MNRAS, 498(3), 4178-4191.",
+            "Zackrisson, E., Majumdar, S., Mondal, R., Binggeli, C., Sahlén, M, Choudhury, T. R., Ciardi, B., Datta, A., Datta, K. K., Dayal, P., Ferrara, A., Giri, S. K., Maio, U., Malhotra, S., Mellema, G., Mesinger, A., Rhoads, J., Rydberg, C.-E., Shimizu, I., 2020. Bubble mapping with the Square Kilometer Array-I. Detecting galaxies with Euclid, JWST, WFIRST and ELT within ionized bubbles in the intergalactic medium at z>6. MNRAS, 493(1), 855-870.",
+            "Giri, S. K., Mellema, G. and Jensen, H., 2020. Tools21cm: A python package to analyse the large-scale 21-cm signal from the Epoch of Reionization and Cosmic Dawn. JOSS, 5(52), 2363.",
+            "Ghara, R., Giri, S. K., Mellema, G., Ciardi, B., Zaroubi, S., Iliev, I. T., Koopmans, L. V. E., Chapman, E., Gazagnes, S., Gehlot, B. K., Ghosh, A., Jelić, V., Mertens, F. G., Mondal, R., Schaye, J., Silva, M. B., Asad, K. M. B., Kooistra, R., Mevius, M., Offringa, A. R., Pandey, V. N., Yatawatta, S., 2020. Constraining the intergalactic medium at z ≈ 9.1 using the LOFAR epoch of reionization observation. MNRAS, 493(4), 4728-4747.",
+            "Mertens, F. G., Mevius, M., Koopmans, L. V. E., Offringa, A. R., Mellema, G., Zaroubi, S., Brentjens, M. A., Gan, H., Gehlot, B. K., Pandey, V. N., Sardarabadi, A. M., Vedantham, H. K., Yatawatta, S., Asad, K. M. B., Ciardi, B., Chapman, E., Gazagnes, S., Ghara, R., Ghosh, A., Giri, S. K., Iliev, I. T., Jelić, V., Kooistra, R., Mondal, R., Schaye, J., Silva, M. B., 2020. Improved upper limits on the 21-cm signal power spectrum of neutral hydrogen at z ≈ 9.1 from LOFAR. MNRAS, 493(2), 1662-1685.",
+            "Giri, S. K., Zackrisson, E., Binggeli, C., Pelckmans, K. and Cubo, R., 2020. Identifying reionization-epoch galaxies with extreme levels of Lyman continuum leakage in James Webb Space Telescope surveys. MNRAS, 491(4), 5277-5286.",
+            "Giri, S. K., D'Aloisio, A., Mellema, G., Komatsu, E., Ghara, R. and Majumdar, S., 2019. Position-dependent power spectra of the 21-cm signal from the epoch of reionization. JCAP, 2019(02), 058.",
+            "Giri, S. K., Mellema, G., Aldheimer, T., Dixon, K. L. and Iliev, I.T., 2019. Neutral island statistics during reionization from 21-cm tomography. MNRAS, 489(2), 1590-1605.",
+            "Watkinson, C. A., Giri, S. K., Ross, H. E., Dixon, K. L., Iliev, I. T., Mellema, G. and Pritchard, J. R., 2019, The 21cm bispectrum as a probe of non-Gaussianities due to X-ray heating. MNRAS, 482(2), 2653-2669.",
+            "Giri, S. K., Mellema, G. and Ghara, R., 2018. Optimal identification of HII regions during reionization in 21-cm observations. MNRAS, 479(4), 5596-5611.",
+            "Ghara, R., Mellema, G., Giri, S. K., Choudhury, T. R., Datta, K. K. and Majumdar, S., 2018. Prediction of the 21-cm signal from reionization: comparison between 3D and 1D radiative transfer schemes. MNRAS, 476(2), 1741-1755.",
+            "Giri, S. K., Mellema, G., Dixon, K. L. and Iliev, I. T., 2018. Bubble size statistics during reionization from 21-cm tomography. MNRAS, 473(3), 2949-2964.",
+            "de Salis, E., De Santis, M., Piras, D., Giri, S. K., Bianco, M., et al., 2025. Exploring the Early Universe with Deep Learning. Progress in Artificial Intelligence, EPIA 2025. Lecture Notes in Computer Science, vol 16121, Springer, Cham.",
+            "Hirling, P., Bianco, M., Giri, S. K., Iliev, I. T., Mellema, G., Kneib, J-P, 2023. pyC2Ray: Python interface to C2Ray with GPU acceleration. ASCL, ascl:2312.025.",
+            "Mellema, G., Iliev, I. T., Dixon, K. L., Giri, S. K., 2023. C2Ray: Radiative transfer of ionizing radiation. ASCL, ascl:2312.024.",
+            "Giri, S. K., Schneider, A., 2023. BCemu: Emulator for baryonic feedback effects on the matter power spectrum. ASCL, ascl:2308.010.",
+            "Giri, S. K., Nebrin, O. and Mellema, G., 2023. Imprints of early Universe galaxy formation on the 21-cm signal at cosmic dawn. The URSI GASS 2023 Proceedings.",
+            "Giri, S. K., Zackrisson, E., Binggeli, C., Pelckmans, K., Cubo, R. and Mellema, G., 2017. Constraining Lyman continuum escape using Machine Learning. Proceedings of the IAU, 12(S333), 254-258.",
+            "Mellema, G., Giri, S. K. and Ghara, R., 2017. Analysis of 21-cm tomographic data. Proceedings of the IAU, 12(S333), 26-29.",
+            "Ghara, R., Choudhury, T. R., Datta, K. K., Mellema, G., Choudhuri, S., Majumdar, S. and Giri, S. K., 2017. Prospects of detection of the first sources with SKA using matched filters. Proceedings of the IAU, 12(S333), 122-125."
+        ];
+
+
+        // --- 2. RENDER FUNCTIONS ---
+
+        // Render Hero Badges
+        const badges = ["Independent Researcher (PI) · Stockholm University", "Former Nordita Fellow", "Key Member · SKA EoR", "Core Member · LOFAR EoR", "Member · Euclid Consortium", "Member · Roman Cosmic Dawn"];
+        document.getElementById('hero-badges').innerHTML = badges.map(role => `<span class="px-3 py-1.5 bg-slate-800/40 border border-slate-700/60 rounded-md text-xs font-mono text-slate-300 shadow-sm backdrop-blur-sm">${role}</span>`).join('');
+
+        // Render News Ticker
+        let showAllNews = false;
+        function renderNews() {
+            const container = document.getElementById('news-grid');
+            const items = showAllNews ? recentNews : recentNews.slice(0, 3);
+            container.innerHTML = items.map(news => `
+                <div class="bg-slate-900/30 border border-slate-800 p-4 rounded-xl flex gap-4 items-start hover:bg-slate-900/50 transition-colors">
+                    <div class="w-2 h-2 rounded-full mt-2 flex-shrink-0 ${news.bg.replace('/10', '')}"></div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded uppercase tracking-wider ${news.color} ${news.bg}">${news.type}</span>
+                            <span class="text-[10px] font-mono text-slate-500">${news.date}</span>
+                        </div>
+                        <p class="text-sm text-slate-400 leading-relaxed">${news.text}</p>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('toggle-news-btn').innerHTML = showAllNews 
+                ? `Hide Previous Updates <i data-lucide="chevron-up" class="w-4 h-4 transition-transform duration-300"></i>`
+                : `View Previous Updates <i data-lucide="chevron-down" class="w-4 h-4 transition-transform duration-300"></i>`;
+            lucide.createIcons();
+        }
+        document.getElementById('toggle-news-btn').addEventListener('click', () => {
+            showAllNews = !showAllNews;
+            renderNews();
+        });
+        renderNews();
+
+        // Render Research Pillars
+        let currentPillarIdx = 0;
+        function renderPillars() {
+            const tabsContainer = document.getElementById('pillar-tabs');
+            tabsContainer.innerHTML = researchPillars.map((pillar, idx) => `
+                <button onclick="selectPillar(${idx})" class="text-left p-6 rounded-2xl border transition-all duration-300 flex-shrink-0 w-72 lg:w-full flex flex-col ${currentPillarIdx === idx ? `bg-slate-800/80 ${pillar.theme.border} shadow-lg ${pillar.theme.shadow} translate-x-0 lg:translate-x-2` : 'bg-slate-900/30 border-slate-800/50 hover:bg-slate-800/50 hover:border-slate-700'}">
+                    <div class="mb-4 transition-colors duration-300 ${currentPillarIdx === idx ? pillar.theme.text : 'text-slate-500'}">
+                        <i data-lucide="${pillar.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <div class="text-xs font-mono font-medium tracking-wider mb-2 transition-colors duration-300 ${currentPillarIdx === idx ? pillar.theme.text : 'text-slate-500'}">${pillar.label}</div>
+                    <h3 class="text-lg font-bold transition-colors duration-300 ${currentPillarIdx === idx ? 'text-slate-200' : 'text-slate-400'}">${pillar.title}</h3>
+                </button>
+            `).join('');
+
+            const active = researchPillars[currentPillarIdx];
+            document.getElementById('pillar-title').innerText = active.title;
+            document.getElementById('pillar-desc').innerText = active.desc;
+            document.getElementById('pillar-bullets').innerHTML = active.bullets.map(b => `<li class="flex items-start gap-4"><i data-lucide="chevron-right" class="w-5 h-5 flex-shrink-0 mt-1 ${active.theme.text}"></i> <span class="font-serif leading-relaxed text-base md:text-lg">${b}</span></li>`).join('');
+            
+            const imgEl = document.getElementById('pillar-image');
+            const fallbackEl = document.getElementById('pillar-fallback');
+            imgEl.style.display = 'block';
+            fallbackEl.style.display = 'none';
+            imgEl.src = active.imagePath;
+            fallbackEl.innerHTML = fallbackSVGs[active.fallback];
+            
+            document.getElementById('pillar-featured').className = `mt-auto p-5 rounded-xl border bg-slate-900/60 ${active.theme.border}`;
+            document.getElementById('pillar-featured').innerHTML = `
+                <div class="flex items-center gap-2 mb-3">
+                    <i data-lucide="book-open" class="w-4 h-4 ${active.theme.text}"></i>
+                    <span class="text-[10px] font-mono tracking-wider uppercase ${active.theme.text}">Featured Publication</span>
+                </div>
+                <h4 class="font-serif text-slate-200 font-medium mb-2 text-base md:text-lg leading-relaxed">${active.featuredPaper.title}</h4>
+                <p class="text-xs text-slate-400">${active.featuredPaper.authors.replace('Giri, S. K.', '<strong class="font-sans text-slate-200">Giri, S. K.</strong>')}</p>
+            `;
+            lucide.createIcons();
+        }
+        window.selectPillar = (idx) => { currentPillarIdx = idx; renderPillars(); };
+        renderPillars();
+
+        // Render Tools
+        document.getElementById('tools-grid').innerHTML = tools.map(t => `
+            <a href="${t.link}" target="_blank" class="block group h-full">
+                <div class="bg-slate-800/30 border border-slate-700 hover:bg-slate-800/60 hover:border-slate-600 rounded-xl p-6 transition-all flex flex-col h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-lg font-bold text-slate-200 group-hover:text-cyan-400 transition-colors flex items-center gap-3">
+                            <i data-lucide="${t.icon}" class="w-6 h-6 ${t.color}"></i> ${t.title}
+                        </h4>
+                        <i data-lucide="external-link" class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <p class="text-slate-400 mb-6 flex-grow text-sm leading-relaxed">${t.desc}</p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        ${t.tags.map(tag => `<span class="text-[10px] uppercase tracking-wider font-mono px-2 py-1 bg-slate-900/80 text-slate-300 rounded">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </a>
+        `).join('');
+
+        // Render Teaching
+        document.getElementById('teaching-grid').innerHTML = teachingProjects.map(t => `
+            <a href="${t.link}" target="_blank" class="block group h-full">
+                <div class="bg-slate-900/30 border border-slate-800 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col hover:border-slate-600">
+                    <div class="flex justify-between items-start mb-4">
+                        <h4 class="text-xl font-bold text-slate-200 group-hover:text-cyan-400 transition-colors flex items-center gap-3">
+                            <i data-lucide="${t.icon}" class="w-6 h-6 ${t.color}"></i> ${t.title}
+                        </h4>
+                        <i data-lucide="external-link" class="w-4 h-4 text-slate-600 group-hover:text-cyan-400 transition-colors"></i>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed flex-grow mb-6">${t.desc}</p>
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        ${t.tags.map(tag => `<span class="text-[10px] uppercase tracking-wider font-mono px-2 py-1 bg-slate-800/80 text-slate-400 rounded">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </a>
+        `).join('');
+
+        // Render Collabs
+        document.getElementById('collabs-grid').innerHTML = collaborations.map(c => `
+            <a href="${c.href}" target="_blank" class="block group h-full">
+                <div class="bg-slate-900/30 border border-slate-800 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 h-full flex flex-col hover:${c.border}">
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-baseline gap-3">
+                            <h3 class="text-xl font-bold text-slate-100">${c.name}</h3>
+                            <span class="text-xs text-slate-500">${c.full}</span>
+                        </div>
+                        <i data-lucide="external-link" class="w-4 h-4 text-slate-600 group-hover:text-slate-400 transition-colors"></i>
+                    </div>
+                    <div class="text-[10px] uppercase font-mono tracking-wider px-2 py-1 rounded inline-block mb-4 w-max ${c.bg} ${c.color}">${c.role}</div>
+                    <p class="text-sm text-slate-400 leading-relaxed flex-grow">${c.desc}</p>
+                </div>
+            </a>
+        `).join('');
+
+        // Render Publications
+        function getPubTags(pubString) {
+            const tags = [];
+            const lower = pubString.toLowerCase();
+            if (lower.includes('proceedings') || lower.includes('epia') || lower.includes('ursi')) tags.push({label: 'Proceedings', cls: 'text-amber-400 bg-amber-400/10 border-amber-400/20'});
+            if (lower.includes('ascl') || lower.includes('code') || lower.includes('python') || lower.includes('tools21cm') || lower.includes('bcemu') || lower.includes('beorn')) tags.push({label: 'Software', cls: 'text-pink-400 bg-pink-400/10 border-pink-400/20'});
+            if (lower.includes('21-cm') || lower.includes('reionization') || lower.includes('lofar') || lower.includes('ska') || lower.includes('igm')) tags.push({label: '21cm / EoR', cls: 'text-cyan-400 bg-cyan-400/10 border-cyan-400/20'});
+            if (lower.includes('machine learning') || lower.includes('deep learning') || lower.includes('neural') || lower.includes('inference') || lower.includes('emulator')) tags.push({label: 'ML / SBI', cls: 'text-indigo-400 bg-indigo-400/10 border-indigo-400/20'});
+            if (lower.includes('topology') || lower.includes('betti') || lower.includes('morphology') || lower.includes('island')) tags.push({label: 'Topology', cls: 'text-purple-400 bg-purple-400/10 border-purple-400/20'});
+            if (lower.includes('baryonic') || lower.includes('dark matter') || lower.includes('weak lensing') || lower.includes('power spectrum')) tags.push({label: 'Dark Matter / LSS', cls: 'text-emerald-400 bg-emerald-400/10 border-emerald-400/20'});
+            if (tags.length === 0) tags.push({label: 'Astrophysics', cls: 'text-slate-400 bg-slate-800/40 border-slate-700/50'});
+            return tags.slice(0, 3);
+        }
+
+        let currentPubTab = 'all';
+        function setPubTab(tab) {
+            currentPubTab = tab;
+            ['all', 'first', 'second-third'].forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                if(t === tab) {
+                    el.className = `flex-1 py-3 px-2 text-[11px] uppercase tracking-wider font-mono transition-colors border-b-2 bg-slate-800/40 ${t==='all'?'text-emerald-400 border-emerald-400':t==='first'?'text-cyan-400 border-cyan-400':'text-indigo-400 border-indigo-400'}`;
+                } else {
+                    el.className = "flex-1 py-3 px-2 text-[11px] uppercase tracking-wider font-mono transition-colors text-slate-500 hover:text-slate-300 hover:bg-slate-800/20";
+                }
+            });
+
+            const filtered = fullPublicationList.filter(pub => {
+                if (tab === 'all') return true;
+                const lower = pub.toLowerCase();
+                if (lower.includes('proceedings') || lower.includes('epia') || lower.includes('ursi') || lower.includes('ascl')) return false;
+                const prefix = pub.substring(0, pub.indexOf('Giri'));
+                const commas = (prefix.match(/,/g) || []).length;
+                if (tab === 'first') return commas === 0;
+                if (tab === 'second-third') return commas > 0 && commas <= 2;
+                return true;
+            });
+
+            const container = document.getElementById('pubs-list');
+            if (filtered.length === 0) {
+                container.innerHTML = `<p class="text-slate-500 text-sm text-center py-4">No publications found for this filter.</p>`;
+                return;
+            }
+
+            container.innerHTML = filtered.map((pub, idx) => {
+                const formattedPub = pub.replace('Giri, S. K.', '<strong class="font-sans text-slate-200">Giri, S. K.</strong>');
+                const displayNum = filtered.length - idx;
+                const tags = getPubTags(pub);
+                return `
+                    <div class="flex gap-3 items-start text-[14px] text-slate-400 pb-5 border-b border-slate-800/30 last:border-0 last:pb-0">
+                        <span class="text-cyan-500/50 font-mono text-[11px] pt-1 flex-shrink-0">[${displayNum}]</span>
+                        <div>
+                            <p class="font-serif text-[1.05rem] md:text-[1.15rem] text-slate-300 leading-relaxed mb-3">${formattedPub}</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${tags.map(t => `<span class="text-[9px] uppercase tracking-wider font-mono px-1.5 py-0.5 rounded border ${t.cls}">${t.label}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>`;
+            }).join('');
+        }
+        setPubTab('all');
+
+        // Render Talks
+        document.getElementById('talks-list').innerHTML = invitedTalks.map(t => `
+            <div class="p-4 bg-slate-900/30 border border-slate-800/60 rounded-xl flex gap-4 items-start hover:bg-slate-900/50 transition-colors">
+                <i data-lucide="mic" class="w-5 h-5 text-indigo-400 mt-1 flex-shrink-0"></i>
+                <div class="flex-grow">
+                    <div class="flex justify-between items-start gap-4 mb-2">
+                        <h4 class="text-slate-200 font-medium text-sm leading-relaxed">"${t.title}"</h4>
+                        <span class="text-[10px] font-mono text-slate-500 whitespace-nowrap pt-1 flex-shrink-0">${t.date}</span>
+                    </div>
+                    <p class="text-xs text-slate-400">${t.venue}</p>
+                </div>
+            </div>
+        `).join('');
+
+        // --- 3. DYNAMIC BEHAVIORS ---
+
+        // Scroll Logic (Navbar & Progress Bar)
+        const navbar = document.getElementById('navbar');
+        const progressBar = document.getElementById('scroll-progress');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            // Navbar Background
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-[#060913]/90', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-[#060913]/90', 'backdrop-blur-md', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+
+            // Progress Bar
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            // Formula updated to show viewport progress (winScroll + clientHeight) / scrollHeight
+            const scrollAmount = ((winScroll + document.documentElement.clientHeight) / document.documentElement.scrollHeight) * 100;
+            progressBar.style.width = scrollAmount + "%";
+
+            // Active Nav Links
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('text-cyan-400');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('text-cyan-400');
+                }
+            });
+        });
+
+        // Initialize progress bar on load
+        window.dispatchEvent(new Event('scroll'));
+
+        // Hero Visualizer Animation
+        const visualsContainer = document.getElementById('hero-visuals-container');
+        const visualLabels = ["21-cm Signal / Reionization", "N-body / Baryonic Feedback", "Neural Density Estimation"];
+        const visualKeys = ["reionization", "powerSpectrum", "inference"];
+        
+        visualsContainer.innerHTML = visualKeys.map((key, i) => `
+            <div id="vis-${i}" class="absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}">
+                ${fallbackSVGs[key]}
+                <div class="absolute bottom-4 right-4 px-2.5 py-1 bg-slate-900/90 border border-slate-700/80 rounded shadow text-[10px] font-mono text-cyan-400/90 backdrop-blur-sm">${visualLabels[i]}</div>
+            </div>
+        `).join('');
+
+        let activeVisIdx = 0;
+        setInterval(() => {
+            document.getElementById(`vis-${activeVisIdx}`).classList.replace('opacity-100', 'opacity-0');
+            document.getElementById(`vis-${activeVisIdx}`).classList.replace('z-10', 'z-0');
+            activeVisIdx = (activeVisIdx + 1) % 3;
+            document.getElementById(`vis-${activeVisIdx}`).classList.replace('opacity-0', 'opacity-100');
+            document.getElementById(`vis-${activeVisIdx}`).classList.replace('z-0', 'z-10');
+        }, 4000);
+
+        // Particle Background Canvas
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 1.5 + 0.5;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(34, 211, 238, 0.45)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            resizeCanvas();
+            particles = [];
+            const numParticles = Math.min(Math.floor(window.innerWidth / 15), 90);
+            for (let i = 0; i < numParticles; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 140) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(99, 102, 241, ${1 - distance / 140})`;
+                        ctx.lineWidth = 0.4;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', initParticles);
+        initParticles();
+        animateParticles();
+
+        // Footer Year
+        document.getElementById('current-year').innerText = new Date().getFullYear();
+
+        // Initialize Lucide Icons at the very end
+        lucide.createIcons();
+
+    </script>
+</body>
+</html>
