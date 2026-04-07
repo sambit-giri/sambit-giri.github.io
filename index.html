@@ -51,11 +51,25 @@
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6 bg-transparent">
-        <div class="max-w-6xl mx-auto px-6 flex justify-between items-center relative z-10">
-            <div class="text-xl font-bold tracking-tighter text-slate-100 flex items-center gap-2">
-                <span class="text-cyan-500">Dr.</span> Sambit Giri
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-bold tracking-tighter text-slate-100 flex items-center gap-2">
+                    <span class="text-cyan-500">Dr.</span> Sambit Giri
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
+                    <a href="#home" class="nav-link hover:text-cyan-400 transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
+                    <a href="#research" class="nav-link hover:text-cyan-400 transition-colors">Research</a>
+                    <a href="#teaching" class="nav-link hover:text-cyan-400 transition-colors">Teaching</a>
+                    <a href="#publications" class="nav-link hover:text-cyan-400 transition-colors">Publications</a>
+                    <a href="#contact" class="nav-link hover:text-cyan-400 transition-colors">Contact</a>
+                </div>
+                <button id="menu-toggle" class="md:hidden text-slate-400 hover:text-cyan-400 transition-colors" aria-label="Toggle menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
             </div>
-            <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
+            <!-- Mobile dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden mt-3 pb-3 flex-col space-y-3 text-sm font-medium text-slate-400">
                 <a href="#home" class="nav-link hover:text-cyan-400 transition-colors">Home</a>
                 <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
                 <a href="#research" class="nav-link hover:text-cyan-400 transition-colors">Research</a>
@@ -778,6 +792,21 @@
 
         // Footer Year
         document.getElementById('current-year').innerText = new Date().getFullYear();
+
+        // Hamburger menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+        // Close menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
 
         // Initialize Lucide Icons at the very end
         lucide.createIcons();
