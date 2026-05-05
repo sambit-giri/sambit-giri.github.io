@@ -9,13 +9,37 @@
 //   bg      : Tailwind bg color class for the badge (use /10 opacity)
 
 const recentUpdates = [
+  // {
+  //   date:    "2026-10",
+  //   display: "Oct 2026",
+  //   type:    "Teaching",
+  //   text:    "Scheduled to teach <strong>Cosmology</strong> (7.5 ECTS) at Stockholm University.",
+  //   color:   "text-violet-400",
+  //   bg:      "bg-violet-400/10"
+  // },
   {
-    date:    "2026-10",
-    display: "Oct 2026",
-    type:    "Teaching",
-    text:    "Scheduled to teach <strong>Cosmology</strong> (7.5 ECTS) at Stockholm University.",
-    color:   "text-violet-400",
-    bg:      "bg-violet-400/10"
+    date:    "2026-07",
+    display: "Jun–Jul 2026",
+    type:    "Talk",
+    text:    "Invited talk at the <strong>European Astronomical Society Annual Meeting</strong>, Lausanne, Switzerland — <em>Witnessing the Epoch of Reionization with the Square Kilometre Array</em>.",
+    color:   "text-pink-400",
+    bg:      "bg-pink-400/10"
+  },
+  {
+    date:    "2026-05",
+    display: "May 2026",
+    type:    "Talk",
+    text:    "Contributed talk at the <strong>LOFAR EoR KSP meeting</strong>, MPA Garching, Germany — <em>Foregrounds vs. physics: biases in 21-cm reionization constraints</em>.",
+    color:   "text-pink-400",
+    bg:      "bg-pink-400/10"
+  },
+  {
+    date:    "2026-04",
+    display: "Apr 2026",
+    type:    "Grant",
+    text:    "Granted <strong>Stockholm University Special Educational Funding</strong> (PI) for the project <em>Development of a Privacy-Preserving AI-based Assessment Assistant for Higher Education</em>.",
+    color:   "text-amber-400",
+    bg:      "bg-amber-400/10"
   },
   {
     date:    "2026-03",
