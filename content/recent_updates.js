@@ -25,14 +25,14 @@ const recentUpdates = [
     color:   "text-pink-400",
     bg:      "bg-pink-400/10"
   },
-  {
-    date:    "2026-05",
-    display: "May 2026",
-    type:    "Talk",
-    text:    "Contributed talk at the <strong>LOFAR EoR KSP meeting</strong>, MPA Garching, Germany — <em>Foregrounds vs. physics: biases in 21-cm reionization constraints</em>.",
-    color:   "text-pink-400",
-    bg:      "bg-pink-400/10"
-  },
+  // {
+  //   date:    "2026-05",
+  //   display: "May 2026",
+  //   type:    "Talk",
+  //   text:    "Contributed talk at the <strong>LOFAR EoR KSP meeting</strong>, MPA Garching, Germany — <em>Foregrounds vs. physics: biases in 21-cm reionization constraints</em>.",
+  //   color:   "text-pink-400",
+  //   bg:      "bg-pink-400/10"
+  // },
   {
     date:    "2026-04",
     display: "Apr 2026",
