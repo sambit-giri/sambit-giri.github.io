@@ -19,7 +19,7 @@ const recentWorkFigures = [
     bg:      '#ffffff'
   },
   {
-    path:    "images/Schneider2025_baryonified_maps.png",
+    path:    "images/Schneider2025_baryonified_maps.webp",
     heading: "Baryonification: transforming N-body dark matter fields to emulate hydrodynamical simulations at a fraction of the cost",
     paper:   "Schneider et al. 2025, JCAP, 2025(12), 043.",
     href:    "https://arxiv.org/abs/2507.07892",
@@ -27,7 +27,7 @@ const recentWorkFigures = [
     bg:      '#ffffff'
   },
   {
-    path:    "images/Kovac2025_Sk_constraints.png",
+    path:    "images/Kovac2025_Sk_constraints.webp",
     heading: "Constraints on matter power spectrum suppression due to baryonic feedback",
     paper:   "Kovač et al. 2025, JCAP, 2025(11), 046.",
     href:    "https://arxiv.org/abs/2511.11568",
