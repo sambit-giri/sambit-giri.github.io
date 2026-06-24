@@ -17,25 +17,31 @@ const papers = [
 
   // ── 2026 ──────────────────────────────────────────────────────────────────
   {
-    cite: "Torkamani, M., Reischke, R., Kovač, M., Nicola, A., Bucko, J., Refregier, A., Giri, S. K., Schneider, A., Hagstotz, S., 2026. Baryonification III: An accurate analytical model for the dispersion measure probability density function of fast radio bursts. Submitted to OJAp.",
+    cite: "Giri, S. K., Mertens, F., 2026. Impact of 21-cm foreground mitigation strategies on reionization power spectrum constraints. Submitted to MNRAS.",
+    href: "https://arxiv.org/abs/2606.14682",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Torkamani, M., Reischke, R., Kovač, M., Nicola, A., Bucko, J., Refregier, A., Giri, S. K., Schneider, A., Hagstotz, S., 2026. Baryonification III: An accurate analytical model for the dispersion measure probability density function of fast radio bursts. OJAp, vol. 9.",
     href: "https://arxiv.org/abs/2601.18784",
     selected: false,
     tags: ['FRBs', 'Feedback', 'Cosmology']
   },
   {
-    cite: "Schwandt, T. P., Georgiev, I., Giri, S. K., Mellema, G., Iliev, I. T., 2026. Impact of anisotropic photon emission from sources during the epoch of reionisation. Accepted by MNRAS.",
+    cite: "Cerardi, N., Giri, S. K., Bianco, M., Piras, D., de Salis, E., De Santis, M., Selcuk-Simsek, M., Denzel, P., et al., 2026. SEarCH: Constraining the reionisation history with higher-order statistics of the 21-cm signal. MNRAS, 549 (1), stag779.",
+    href: "https://arxiv.org/abs/2511.11568",
+    selected: true,
+    tags: ['21cm', 'EoR', 'SBI']
+  },
+  {
+    cite: "Schwandt, T. P., Georgiev, I., Giri, S. K., Mellema, G., Iliev, I. T., 2026. Impact of anisotropic photon emission from sources during the epoch of reionisation. MNRAS, 547 (2), stag129.",
     href: "https://arxiv.org/abs/2505.02716",
     selected: true,
     tags: ['21cm', 'EoR', 'Early Galaxies']
   },
 
   // ── 2025 ──────────────────────────────────────────────────────────────────
-  {
-    cite: "Cerardi, N., Giri, S. K., Bianco, M., Piras, D., de Salis, E., De Santis, M., Selcuk-Simsek, M., Denzel, P., et al., 2025. SEarCH: Constraining the reionisation history with higher-order statistics of the 21-cm signal. Submitted to MNRAS.",
-    href: "https://arxiv.org/abs/2511.11568",
-    selected: true,
-    tags: ['21cm', 'EoR', 'SBI']
-  },
   {
     cite: "Kovač, M., Nicola, A., Bucko, J., Schneider, A., Reischke, R., Giri, S. K., Teyssier, R., Schaller, M., Schaye, J., 2025. Baryonification II: Constraining feedback with X-ray and kinematic Sunyaev-Zel'dovich observations. JCAP, 2025(11), 046.",
     href: "https://arxiv.org/abs/2507.07991",
