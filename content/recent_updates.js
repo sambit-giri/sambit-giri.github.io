@@ -25,14 +25,38 @@ const recentUpdates = [
     color:   "text-pink-400",
     bg:      "bg-pink-400/10"
   },
-  // {
-  //   date:    "2026-05",
-  //   display: "May 2026",
-  //   type:    "Talk",
-  //   text:    "Contributed talk at the <strong>LOFAR EoR KSP meeting</strong>, MPA Garching, Germany — <em>Foregrounds vs. physics: biases in 21-cm reionization constraints</em>.",
-  //   color:   "text-pink-400",
-  //   bg:      "bg-pink-400/10"
-  // },
+  {
+    date:    "2026-06",
+    display: "Jun 2026",
+    type:    "Book",
+    text:    "Contributing author to <a href='https://arxiv.org/html/2606.20366/' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'><strong>Advancing Astrophysics with the SKA II</strong></a> — SKAO science book.",
+    color:   "text-cyan-400",
+    bg:      "bg-cyan-400/10"
+  },
+  {
+    date:    "2026-06",
+    display: "Jun 2026",
+    type:    "Paper",
+    text:    "Submitted to MNRAS: <a href='https://arxiv.org/abs/2606.14682' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Impact of 21-cm foreground mitigation strategies on reionization power spectrum constraints</a>.",
+    color:   "text-cyan-400",
+    bg:      "bg-cyan-400/10"
+  },
+  {
+    date:    "2026-06",
+    display: "Jan–Jun 2026",
+    type:    "Supervision",
+    text:    "Master's student <strong>Rikard Lesley</strong> successfully defended their thesis at Stockholm University — <em>Construction of a 21 cm Reionization Power Spectrum Emulators Utilising Transfer Learning</em>.",
+    color:   "text-teal-400",
+    bg:      "bg-teal-400/10"
+  },
+  {
+    date:    "2026-04",
+    display: "Apr 2026",
+    type:    "Paper",
+    text:    "Published in OJAp: <a href='https://arxiv.org/abs/2601.18784' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Baryonification III: An accurate analytical model for the DM PDF of FRBs</a>.",
+    color:   "text-cyan-400",
+    bg:      "bg-cyan-400/10"
+  },
   {
     date:    "2026-04",
     display: "Apr 2026",
@@ -64,22 +88,6 @@ const recentUpdates = [
     text:    "Organising committee member for the <a href='https://indico.chalmers.se/event/371/overview' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>3rd National Sweden SKA Science Days</a>.",
     color:   "text-amber-400",
     bg:      "bg-amber-400/10"
-  },
-  {
-    date:    "2026-01",
-    display: "Jan 2026",
-    type:    "Supervision",
-    text:    "Supervising master's student <strong>Rikard Lesley</strong> at Stockholm University — <em>Building a deep learning model to test complex models of first galaxies</em>.",
-    color:   "text-teal-400",
-    bg:      "bg-teal-400/10"
-  },
-  {
-    date:    "2026-01",
-    display: "Jan 2026",
-    type:    "Paper",
-    text:    "Submitted to OJAp: <a href='https://arxiv.org/abs/2601.18784' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Baryonification III: An accurate analytical model for the DM PDF of FRBs</a>.",
-    color:   "text-cyan-400",
-    bg:      "bg-cyan-400/10"
   },
   {
     date:    "2025-12",
