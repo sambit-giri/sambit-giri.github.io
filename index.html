@@ -12,6 +12,15 @@
 
     <!-- Custom CSS for Scrollbars -->
     <style>
+        /* AI-generated starfield (starry_night.png), tiled down the page as a static
+           backdrop — replaces the old animated particle canvas + blurred glow orbs,
+           which cost real CPU/GPU on mobile (see git history for details). */
+        .starfield-bg {
+            background-color: #060913;
+            background-image: url('images/starry-sky.webp');
+            background-repeat: repeat;
+            background-size: 900px auto;
+        }
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(30, 41, 59, 0.8); border-radius: 4px; }
@@ -24,16 +33,7 @@
         .fade-enter-active { opacity: 1; z-index: 10; transition: opacity 1s ease-in-out; }
     </style>
 </head>
-<body class="min-h-screen bg-[#060913] text-slate-300 font-sans selection:bg-cyan-500/30">
-
-    <!-- Cosmic Web Particle Background -->
-    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-70"></canvas>
-    
-    <!-- Decorative Glowing Background Orbs -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 mix-blend-screen">
-        <div class="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] rounded-full bg-cyan-900/10 blur-[90px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[90px]"></div>
-    </div>
+<body class="min-h-screen starfield-bg text-slate-300 font-sans selection:bg-cyan-500/30">
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6 bg-transparent">
@@ -712,61 +712,6 @@
                 }, 10000);
             }
         })();
-
-        // Particle Background Canvas
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4;
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 1.5 + 0.5;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(34, 211, 238, 0.75)';
-                ctx.fill();
-            }
-        }
-
-        function initParticles() {
-            resizeCanvas();
-            particles = [];
-            const numParticles = Math.min(Math.floor(window.innerWidth / 15), 90);
-            for (let i = 0; i < numParticles; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animateParticles);
-        }
-
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            window.addEventListener('resize', initParticles);
-            initParticles();
-            animateParticles();
-        } else {
-            canvas.remove();
-        }
 
         // Footer Year
         document.getElementById('current-year').innerText = new Date().getFullYear();
