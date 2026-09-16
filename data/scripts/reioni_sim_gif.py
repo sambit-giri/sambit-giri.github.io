@@ -40,6 +40,7 @@ dn_zs = np.array([ff.split('/')[-1].split('n_all')[0] for ff in dn_files]).astyp
 zs = np.intersect1d(xf_zs,dn_zs)
 
 filename = './slices_dataset_500Mpc_z50_0_300.pkl' #'./slices_dataset_500Mpc_f2_0_300.pkl'
+# cached pkl moved to a GitHub release to keep the repo small: https://github.com/sambit-giri/sambit-giri.github.io/releases/tag/data-v1
 dataset  = pickle.load(open(filename, 'rb')) if glob(filename) else {}
 if len(dataset.keys())==0:
     for zz in tqdm(zs):

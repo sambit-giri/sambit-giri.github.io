@@ -16,4 +16,6 @@ jobs:
             --exclude 'scholar.google'
             --exclude 'linkedin.com'
             --exclude 'ursi.org'
+            --exclude 'ui.adsabs.harvard.edu'
+            --exclude 'su.se'
             '*.html'
