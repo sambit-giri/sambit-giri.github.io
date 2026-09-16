@@ -6,6 +6,7 @@
 //   date  : display date string (e.g. "Apr 2025")
 
 const invitedTalks = [
+    { title: "Witnessing the Epoch of Reionization with the Square Kilometre Array", venue: "EAS Annual Meeting, Lausanne, Switzerland", date: "Jun 2026" },
     { title: "Robust Exploration of Patchy Reionization", venue: "Cosmology Seminar, ETH Zurich, Switzerland", date: "Apr 2025" },
     { title: "E pluribus unum — how much do galaxy details matter?", venue: "Understanding the Epoch of Reionization II, Sesto, Italy", date: "Jan 2025" },
     { title: "Towards resolving the S8 tension", venue: "Dutch Theoretical Cosmology Meeting, Groningen", date: "Oct 2024" },

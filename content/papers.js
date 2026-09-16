@@ -17,7 +17,55 @@ const papers = [
 
   // ── 2026 ──────────────────────────────────────────────────────────────────
   {
-    cite: "Giri, S. K., Mertens, F., 2026. Impact of 21-cm foreground mitigation strategies on reionization power spectrum constraints. Submitted to MNRAS.",
+    cite: "Bucko, J., Nicola, A., Schneider, A., Kovač, M., Giri, S. K., Reischke, R., Bulbul, E., Clerc, N., Liu, A., Bartalucci, I., Refregier, A., 2026. Baryonification IV: Constraining baryonic feedback with X-ray gas fractions. Submited to JCAP.",
+    href: "https://arxiv.org/abs/2609.09144",
+    selected: true,
+    tags: ['Feedback', 'X-Ray', 'LSS']
+  },
+  {
+    cite: "EoR/CD Science Working Group,...Giri, S. K., ..., 2026. Overview of 21 cm Experiments at high redshift with SKA-Low. Advancing Astrophysics with the SKA – II (AASKAII), Report number AASKAII/Trott01",
+    href: "https://arxiv.org/abs/2606.26435",
+    selected: false,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Acharya, A., Bag, S., Berger, S., Bianco, M., Breitman, D., Crascall-Kennedy, L., Dasgupta, S., Datta, A., Douspis, M., Georgiev, I., Giri, S. K., Gorce, A., Heneka, C., Hiegel, J., Ian Hothi, I., Kapahtia, A., Kern, N., Mahida, Y., Maity, B., Majumdar, S., Mériot, R., Mondal, R., Murray, S. G., Noble, L., Pal, S. K., Schneider, A., Semelin, B., Shaw, A. K., Shimabukuro, H., Thélie, E., Tripathi, A., Trott, C. M., 2026. Inferring cosmology and astrophysics from the high-redshift 21 cm signal with SKA-Low. Advancing Astrophysics with the SKA – II (AASKAII), Report number AASKAII/Acharya01",
+    href: "https://arxiv.org/abs/2606.27858",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Acharya, A., Bianco, M., Breitman, D., Chen, H., Datta, A., Diao, K., Giri, S. K., Heneka, C., Kern, N., Liu, A., Mahida, Y., Majumdar, S., Pal, S. K., Ni, S., Pietschke, Y., Piras, D., Shaw, A. K., Shimabukuro, H., Sui, C., Tripathi, A., Zhao, X., 2026. Machine Learning and the SKA for Cosmic Dawn and the Epoch of Reionization. Advancing Astrophysics with the SKA – II (AASKAII), Report number AASKAII/Acharya02",
+    href: "https://arxiv.org/abs/2607.03606",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Bag, S., Bianco, M., Choudhuri, S., Dasgupta, S., Datta, A., Datta, K. K., Georgiev, I., Giri, S. K., Hothi, I., Kapahtia, A., Majumdar, S., Mellema, G., Mishra, A., Pal, S. K., Feiyu Zhao, F., 2026. Imaging the 21-cm signal from the Cosmic Dawn & Epoch of Reionization and the connection with the Global Signal. Advancing Astrophysics with the SKA – II (AASKAII), Report number AASKAII/Bag01",
+    href: "https://arxiv.org/abs/2606.24724",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Barkana, R., Basquette, O., Bera, A., Chan, J. Y. H., Chingangbam, P., Cruz, H. A. G., Dasgupta, S., Datta, K. K., Fialkov, A., Giri, S. K., Han, Q., Iliev, I. T., Li, B., Minoda, T., Mittal, S., Muñoz, J. B., Naik, S. S., Raste, J., Schneider, A., Sikder, S., Wu, K., Xu, Y., Yue, B., Zhang, M., Zhao, M.-L.„ 2026. High-Redshift Signatures from the Cosmic Dawn and the Epoch of Reionization. Advancing Astrophysics with the SKA – II (AASKAII), Report number AASKAII/Barkana01",
+    href: "https://arxiv.org/abs/2606.29903",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Bull, P., Burba, J., Bull, P., Ceccotti, E., Chakraborty, A., Chapman, E., Choudhuri, S., Datta, A., Elahi, K. M. A., Giri, S. K., Jelić, V., Mao, Y., Mertens, F., Munshi, S., Nunhokee, R., Offringa, A. R., Pal, S. K., Sagar, R., Sims, P. H., Shan, H., Ito, T., Tripathi, A., Tolley, E., Zhang, L., Zhu, Z., 2026. Foreground characterization and mitigation in the observations of the CD/EoR with the SKA. Advancing Astrophysics with the SKA – II (AASKAII), Report number AASKAII/Burba01",
+    href: "https://arxiv.org/abs/2607.01048",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Chakraborty, A., Choudhury, T. R., Datta, K. K., Dayal, P., Dhandha, J., Gagnon-Hartman, S., Giri, S. K., Gorce, A., Heneka, C., Hutter, A., Maity, B., Majumdar, S., Mesinger, A., Moriwaki, K., Murmu, C. S., Qin, Y., Yoshiura, S., Zackrisson, E., 2026. Synergies for the Epoch of Reionization and Cosmic Dawn. Advancing Astrophysics with the SKA – II (AASKAII), Report number AASKAII/Chakraborty01",
+    href: "https://arxiv.org/abs/2606.30947",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
+    cite: "Giri, S. K., Mertens, F., 2026. Impact of 21-cm foreground mitigation strategies on reionization power spectrum constraints. MNRAS, 550 (2), stag1258.",
     href: "https://arxiv.org/abs/2606.14682",
     selected: true,
     tags: ['21cm', 'Cosmic Dawn', 'EoR']
