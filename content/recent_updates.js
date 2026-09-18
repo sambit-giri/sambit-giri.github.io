@@ -18,6 +18,14 @@ const recentUpdates = [
   //   bg:      "bg-violet-400/10"
   // },
   {
+    date:    "2026-08",
+    display: "Aug 2026",
+    type:    "Paper",
+    text:    "Published in MNRAS: <a href='https://arxiv.org/abs/2606.14682' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Impact of 21-cm foreground mitigation strategies on reionization power spectrum constraints</a>.",
+    color:   "text-cyan-400",
+    bg:      "bg-cyan-400/10"
+  },
+  {
     date:    "2026-07",
     display: "Jun–Jul 2026",
     type:    "Talk",
@@ -34,10 +42,10 @@ const recentUpdates = [
     bg:      "bg-cyan-400/10"
   },
   {
-    date:    "2026-06",
+    date:    "2025-06",
     display: "Jun 2026",
     type:    "Paper",
-    text:    "Submitted to MNRAS: <a href='https://arxiv.org/abs/2606.14682' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Impact of 21-cm foreground mitigation strategies on reionization power spectrum constraints</a>.",
+    text:    "Published in MNRAS: <a href='https://arxiv.org/abs/2511.11568' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Implicit inference of the reionization history with higher-order statistics</a>.",
     color:   "text-cyan-400",
     bg:      "bg-cyan-400/10"
   },
@@ -102,14 +110,6 @@ const recentUpdates = [
     display: "Dec 2025",
     type:    "Paper",
     text:    "Published in MNRAS: <a href='https://arxiv.org/abs/2505.06350' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Mapping neutral islands during end stages of reionization</a>.",
-    color:   "text-cyan-400",
-    bg:      "bg-cyan-400/10"
-  },
-  {
-    date:    "2025-11",
-    display: "Nov 2025",
-    type:    "Paper",
-    text:    "Submitted to MNRAS: <a href='https://arxiv.org/abs/2511.11568' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Implicit inference of the reionization history with higher-order statistics</a>.",
     color:   "text-cyan-400",
     bg:      "bg-cyan-400/10"
   },
