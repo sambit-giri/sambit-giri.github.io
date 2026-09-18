@@ -42,7 +42,7 @@ const recentUpdates = [
     bg:      "bg-cyan-400/10"
   },
   {
-    date:    "2025-06",
+    date:    "2026-06",
     display: "Jun 2026",
     type:    "Paper",
     text:    "Published in MNRAS: <a href='https://arxiv.org/abs/2511.11568' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Implicit inference of the reionization history with higher-order statistics</a>.",
