@@ -13,7 +13,7 @@ const recentWorkFigures = [
   {
     path:    "images/Cerardi2026_FoM.png",
     heading: "Figure of merit comparing constraining power of summary statistics for upcoming SKA-Low data",
-    paper:   "Cerardi, Giri et al. 2025, submitted to MNRAS",
+    paper:   "Cerardi, Giri et al. 2026, MNRAS, 549(1), stag779.",
     href:    "https://arxiv.org/abs/2511.11568",
     tags:    ['21cm', 'EoR', 'SBI'],
     bg:      '#ffffff'
@@ -30,7 +30,7 @@ const recentWorkFigures = [
     path:    "images/Kovac2025_Sk_constraints.webp",
     heading: "Constraints on matter power spectrum suppression due to baryonic feedback",
     paper:   "Kovač et al. 2025, JCAP, 2025(11), 046.",
-    href:    "https://arxiv.org/abs/2511.11568",
+    href:    "https://arxiv.org/abs/2507.07991",
     tags:    ['Feedback', 'Weak Lensing', 'LSS'],
     bg:      '#ffffff'
   },
