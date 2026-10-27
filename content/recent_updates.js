@@ -18,6 +18,14 @@ const recentUpdates = [
   //   bg:      "bg-violet-400/10"
   // },
   {
+    date:    "2026-10",
+    display: "Oct 2026",
+    type:    "Paper",
+    text:    "Submitted to journal: <a href='https://arxiv.org/abs/2610.24064' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Consistently Reproducing Early Galaxy Observations and 21-cm Signal during the Epoch of Reionization</a>.",
+    color:   "text-cyan-400",
+    bg:      "bg-cyan-400/10"
+  },
+  {
     date:    "2026-08",
     display: "Aug 2026",
     type:    "Paper",

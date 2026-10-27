@@ -17,6 +17,12 @@ const papers = [
 
   // ── 2026 ──────────────────────────────────────────────────────────────────
   {
+    cite: "Bianco, M., Giri, S. K., Basu, A., Boschi, T., Schneider, A., Garaldi, E., Mellema, G., 2026. Consistently Reproducing Early Galaxy Observations and 21-cm Signal during the Epoch of Reionization. Submited to MNRAS.",
+    href: "https://arxiv.org/abs/2610.24064",
+    selected: true,
+    tags: ['21cm', 'Cosmic Dawn', 'EoR']
+  },
+  {
     cite: "Bucko, J., Nicola, A., Schneider, A., Kovač, M., Giri, S. K., Reischke, R., Bulbul, E., Clerc, N., Liu, A., Bartalucci, I., Refregier, A., 2026. Baryonification IV: Constraining baryonic feedback with X-ray gas fractions. Submited to JCAP.",
     href: "https://arxiv.org/abs/2609.09144",
     selected: true,
