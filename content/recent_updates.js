@@ -9,14 +9,14 @@
 //   bg      : Tailwind bg color class for the badge (use /10 opacity)
 
 const recentUpdates = [
-  // {
-  //   date:    "2026-10",
-  //   display: "Oct 2026",
-  //   type:    "Teaching",
-  //   text:    "Scheduled to teach <strong>Cosmology</strong> (7.5 ECTS) at Stockholm University.",
-  //   color:   "text-violet-400",
-  //   bg:      "bg-violet-400/10"
-  // },
+  {
+    date:    "2026-10",
+    display: "Autumn 2026",
+    type:    "Teaching",
+    text:    "Teaching <a href='https://sambit-giri.github.io/teaching/Cosmology_HT2026_AS5003/' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'><strong>Cosmology</strong></a> (AS5003, 7.5 ECTS) at the Department of Astronomy, Stockholm University.",
+    color:   "text-violet-400",
+    bg:      "bg-violet-400/10"
+  },
   {
     date:    "2026-10",
     display: "Oct 2026",
