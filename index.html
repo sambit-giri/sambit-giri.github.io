@@ -8,7 +8,7 @@
     <!-- Tailwind CSS (compiled + purged at build time — see tailwind.config.js; run
          `npx tailwindcss -i assets/css/tailwind.input.css -o assets/css/tailwind.css --minify`
          after changing any Tailwind classes in this file or content/*.js) -->
-    <link rel="stylesheet" href="assets/css/tailwind.css">
+    <link rel="stylesheet" href="assets/css/tailwind.css?v=20261107">
 
     <!-- Custom CSS for Scrollbars -->
     <style>
@@ -39,9 +39,9 @@
     <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-6 bg-transparent">
         <div class="max-w-6xl mx-auto px-6 relative z-10">
             <div class="flex justify-between items-center">
-                <div class="text-xl font-bold tracking-tighter text-slate-100 flex items-center gap-2">
+                <a href="#home" id="brand-link" class="text-xl font-bold tracking-tighter text-slate-100 hover:text-cyan-400 transition-colors flex items-center gap-2">
                     <span class="text-cyan-500">Dr.</span> Sambit Giri
-                </div>
+                </a>
                 <div class="hidden md:flex space-x-6 text-sm font-medium text-slate-400">
                     <a href="#home" class="nav-link hover:text-cyan-400 transition-colors">Home</a>
                     <a href="#about" class="nav-link hover:text-cyan-400 transition-colors">About</a>
@@ -390,15 +390,17 @@
     </footer>
 
     <!-- Editable content files (edit files in content/ to update) -->
-    <script src="content/icons.js"></script>
-    <script src="content/research_pillars.js"></script>
-    <script src="content/tools.js"></script>
-    <script src="content/teaching_projects.js"></script>
-    <script src="content/collaborations.js"></script>
-    <script src="content/papers.js"></script>
-    <script src="content/recent_work.js"></script>
-    <script src="content/recent_updates.js"></script>
-    <script src="content/invited_talks.js"></script>
+    <!-- ?v=YYYYMMDD forces browsers to fetch fresh files. Bump it after editing content/*.js or tailwind.css:
+         sed -i "" -E "s/\?v=[0-9]+/?v=$(date +%Y%m%d)/g" index.html -->
+    <script src="content/icons.js?v=20261107"></script>
+    <script src="content/research_pillars.js?v=20261107"></script>
+    <script src="content/tools.js?v=20261107"></script>
+    <script src="content/teaching_projects.js?v=20261107"></script>
+    <script src="content/collaborations.js?v=20261107"></script>
+    <script src="content/papers.js?v=20261107"></script>
+    <script src="content/recent_work.js?v=20261107"></script>
+    <script src="content/recent_updates.js?v=20261107"></script>
+    <script src="content/invited_talks.js?v=20261107"></script>
 
     <!-- All Javascript Logic -->
     <script>
@@ -724,7 +726,7 @@
             mobileMenu.classList.toggle('flex');
         });
         // Close menu when a link is clicked
-        mobileMenu.querySelectorAll('a').forEach(link => {
+        [...mobileMenu.querySelectorAll('a'), document.getElementById('brand-link')].forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
                 mobileMenu.classList.remove('flex');
