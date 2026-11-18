@@ -10,6 +10,14 @@
 
 const recentUpdates = [
   {
+    date:    "2026-11",
+    display: "Nov 2026",
+    type:    "Paper",
+    text:    "New preprint on arXiv: <a href='https://arxiv.org/abs/2611.21760' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>The phase gradient spectrum: probing the squeezed bispectrum of the 21-cm signal during reionization</a>.",
+    color:   "text-cyan-400",
+    bg:      "bg-cyan-400/10"
+  },
+  {
     date:    "2026-10",
     display: "Autumn 2026",
     type:    "Teaching",
@@ -21,7 +29,7 @@ const recentUpdates = [
     date:    "2026-10",
     display: "Oct 2026",
     type:    "Paper",
-    text:    "Submitted to journal: <a href='https://arxiv.org/abs/2610.24064' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Consistently Reproducing Early Galaxy Observations and 21-cm Signal during the Epoch of Reionization</a>.",
+    text:    "New preprint on arXiv: <a href='https://arxiv.org/abs/2610.24064' target='_blank' class='text-cyan-400 hover:text-cyan-300 hover:underline transition-colors'>Consistently Reproducing Early Galaxy Observations and 21-cm Signal during the Epoch of Reionization</a>.",
     color:   "text-cyan-400",
     bg:      "bg-cyan-400/10"
   },
