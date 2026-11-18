@@ -17,6 +17,12 @@ const papers = [
 
   // ── 2026 ──────────────────────────────────────────────────────────────────
   {
+    cite: "Giri, S. K., Meerburg, P. D., Koopmans, L. V. E., 2026. The phase gradient spectrum: probing the squeezed bispectrum of the 21-cm signal during reionization. arXiv:2611.21760.",
+    href: "https://arxiv.org/abs/2611.21760",
+    selected: true,
+    tags: ['21cm', 'EoR', 'Topology']
+  },
+  {
     cite: "Bianco, M., Giri, S. K., Basu, A., Boschi, T., Schneider, A., Garaldi, E., Mellema, G., 2026. Consistently Reproducing Early Galaxy Observations and 21-cm Signal during the Epoch of Reionization. Submited to MNRAS.",
     href: "https://arxiv.org/abs/2610.24064",
     selected: true,
