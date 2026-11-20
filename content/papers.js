@@ -17,6 +17,12 @@ const papers = [
 
   // ── 2026 ──────────────────────────────────────────────────────────────────
   {
+    cite: "Bait, O., Bonaldi, A., Bianco, M., Giri, S. K., Mellema, G., et al., 2026. Square Kilometre Array Science Data Challenge 3b: EoR inference. Submitted to MNRAS.",
+    href: "https://arxiv.org/abs/2611.25823",
+    selected: true,
+    tags: ['21cm', 'EoR', 'SBI']
+  },
+  {
     cite: "Giri, S. K., Meerburg, P. D., Koopmans, L. V. E., 2026. The phase gradient spectrum: probing the squeezed bispectrum of the 21-cm signal during reionization. arXiv:2611.21760.",
     href: "https://arxiv.org/abs/2611.21760",
     selected: true,
